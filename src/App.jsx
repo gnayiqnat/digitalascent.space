@@ -1,14 +1,19 @@
 import './App.css';
-import Nav from './sec/navigation/navigation'
-import handleNavClick from './sec/navigation/navigation'
-import Section1 from './sec/section1'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+/*  */
+import Section1 from './pages/section1/section1';
+import NotFound from './pages/404/404';
 
 function App() {
   return (
     <div id='container'>
-    <Nav/>
-    <Section1 />
-    <h1>test</h1>
+      <Router>
+        <Routes> {/* The Routes decides which component to show based on the current URL.*/}
+          <Route exact path='/' element={<Section1 />}></Route>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

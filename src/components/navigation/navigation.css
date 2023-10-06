@@ -1,0 +1,36 @@
+#nav-container {
+    width: 200px;
+    display: grid;
+    justify-content: start;
+    align-items: center;
+}
+
+#nav {
+    position: absolute;
+    left: 0;
+    top: 33%;
+    height: 50%;
+
+}
+
+.navigation-items {
+    font-family: 'Inter';
+    cursor: pointer;
+
+    margin-left: 10px;
+    font-size: 35px;
+    display: block;
+    white-space: nowrap;
+    border-style: none;
+    background-color: transparent;
+    text-decoration: none;
+    color: black;
+
+    transition: all ease 0.5s;
+}
+
+.navigation-items:hover {
+    font-size: 50px;
+    font-weight: 700;
+
+}
