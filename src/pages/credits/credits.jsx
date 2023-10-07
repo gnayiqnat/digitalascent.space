@@ -7,8 +7,8 @@ function Credits() {
 
     return (
         <>
-            <main id='main'>
-                <h1 id='main-h1'>Credits</h1>
+            <main id='credits_main'>
+                <h1 id='credits_main-h1'>Credits</h1>
             </main>
         </>)
 }

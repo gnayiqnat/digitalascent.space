@@ -1,0 +1,12 @@
+#games_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+#games_main-h1 {
+    font-family: 'Inter';
+    font-size: 5vw;
+}

@@ -7,8 +7,8 @@ function About() {
 
     return (
         <>
-            <main id='main'>
-                <h1 id='main-h1'>About</h1>
+            <main id='about_main'>
+                <h1 id='about_main-h1'>About</h1>
             </main>
         </>)
 }
