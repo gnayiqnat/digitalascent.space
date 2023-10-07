@@ -1,5 +1,5 @@
 import Nav from "../../components/navigation/navigation"
-import './section1.css'
+import './homepage.css'
 
 function Section1() {
 
@@ -7,9 +7,8 @@ function Section1() {
 
     return (
         <>
-            <Nav />
             <main id='main'>
-                <h1 id='main-h1'>DIGITAL ASCENT</h1>
+                <h1 id='main-h1'>Home</h1>
             </main>
         </>)
 }
