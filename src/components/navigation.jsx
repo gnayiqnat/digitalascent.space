@@ -47,7 +47,7 @@ function Nav() {
 							height: '60px',
 						}}>
 						<Button component={RouterLink}
-								to={'/'}><img src={logo} width='50px' /></Button>
+								to={'/'}><img src={logo} style={{marginTop:5}} width='50px' /></Button>
 						<Box
 							style={{
 								width: '30vw',

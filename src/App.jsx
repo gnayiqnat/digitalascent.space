@@ -14,23 +14,24 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Nav from './components/navigation';
 import Homepage from './pages/homepage/homepage';
 import Games from './pages/games/games';
-import Credits from './pages/credits/credits'
+import Credits from './pages/credits/credits';
 import About from './pages/about/about';
 import NotFound from './pages/404/404';
+import logo from './assets/logo.jpeg';
 
 function App() {
 	return (
 		<>
-			<Router>
-				<Nav />
-				<Routes>
-					<Route exact path='/' element={<Homepage />}></Route>
-					<Route exact path='/games' element={<Games />}></Route>
-					<Route exact path='/credits' element={<Credits />}></Route>
-					<Route exact path='/about' element={<About />}></Route>
-					<Route exact path='*' element={<NotFound />}></Route>
-				</Routes>
-			</Router>
+				<Router>
+					<Nav />
+					<Routes>
+						<Route exact path='/' element={<Homepage />}></Route>
+						<Route exact path='/games' element={<Games />}></Route>
+						<Route exact path='/credits' element={<Credits />}></Route>
+						<Route exact path='/about' element={<About />}></Route>
+						<Route exact path='*' element={<NotFound />}></Route>
+					</Routes>
+				</Router>
 		</>
 	);
 }
