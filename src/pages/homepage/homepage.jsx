@@ -26,19 +26,10 @@ import {
 import './homepage.css';
 
 import { createTheme, ThemeProvider } from '@mui/material';
-import { CenterFocusStrong } from '@mui/icons-material';
 
-const theme = createTheme({
-	palette: {
-		primary: { main: '#FFFFFF' },
-		background: { default: '#000016' },
-	},
-});
 
 function Section1() {
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
 			<Grid
 				container
 				spacing={0}
@@ -55,7 +46,6 @@ function Section1() {
 					DIGITAL ASCENT
 				</Typography>
 			</Grid>
-		</ThemeProvider>
 	);
 }
 

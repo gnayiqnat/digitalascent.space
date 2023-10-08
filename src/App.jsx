@@ -18,12 +18,24 @@ import Credits from './pages/credits/credits';
 import About from './pages/about/about';
 import NotFound from './pages/404/404';
 import logo from './assets/logo.jpeg';
+import NavTabs from './components/beta-navigation';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+	palette: {
+		primary: { main: '#FFFFFF' },
+		background: { default: '#000016' },
+		text: {primary: '#ffffff'},
+	},
+});
 
 function App() {
 	return (
 		<>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
 				<Router>
-					<Nav />
+					<NavTabs />
 					<Routes>
 						<Route exact path='/' element={<Homepage />}></Route>
 						<Route exact path='/games' element={<Games />}></Route>
@@ -32,6 +44,7 @@ function App() {
 						<Route exact path='*' element={<NotFound />}></Route>
 					</Routes>
 				</Router>
+			</ThemeProvider>
 		</>
 	);
 }
