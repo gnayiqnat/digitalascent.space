@@ -59,29 +59,43 @@ export default function NavTabs() {
 						aria-label='Navigation'
 						indicatorColor='primary'
 						textColor='primary'
-
-                        sx={{color:'white'}}
-                        >
-						<Tab label='Home' index={0} component={RouterLink} to={'/'} sx={{color:'#ffffff'}}/>
+						TabIndicatorProps={{
+							sx: {
+								bottom: 0,
+                                marginLeft: '4.5%',
+								height: 3,
+                                maxWidth: 60,
+								borderRadius: 10,
+							},
+						}}>
 						<Tab
-							label='Our Games'
+							label='Home'
+							index={0}
+							component={RouterLink}
+							to={'/'}
+							sx={{ color: '#ffffff' }}
+						/>
+						<Tab
+							label='Games'
 							index={1}
 							component={RouterLink}
 							to={'/games'}
-                            sx={{color:'#ffffff'}}
-						/>						<Tab
-                        label='Credits'
-                        index={1}
-                        component={RouterLink}
-                        to={'/credits'}
-                        sx={{color:'#ffffff'}}
-                    />						<Tab
-                    label='About'
-                    index={1}
-                    component={RouterLink}
-                    to={'/about'}
-                    sx={{color:'#ffffff'}}
-                />
+							sx={{ color: '#ffffff' }}
+						/>{' '}
+						<Tab
+							label='Credits'
+							index={1}
+							component={RouterLink}
+							to={'/credits'}
+							sx={{ color: '#ffffff'}}
+						/>{' '}
+						<Tab
+							label='About'
+							index={1}
+							component={RouterLink}
+							to={'/about'}
+							sx={{ color: '#ffffff' }}
+						/>
 					</Tabs>
 				</Box>
 			</Toolbar>
