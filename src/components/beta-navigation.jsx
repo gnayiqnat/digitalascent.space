@@ -29,7 +29,7 @@ import {
 	Link as RouterLink,
 	Routes,
 } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from '../assets/logo.jpeg';
 
 export default function NavTabs() {
@@ -39,8 +39,17 @@ export default function NavTabs() {
 		setValue(newValue);
 	};
 
+	const windowURL = window.location.href
+	useEffect(() => {if (windowURL.includes('/games')) {
+		setValue(1)
+	} else if (windowURL.includes('credits')) {
+		setValue(2)
+	} else if (windowURL.includes('about')) {
+		setValue(3)
+	}})
+	
 	return (
-		<AppBar style={{ background: '#000016', position: 'relative' }}>
+		<AppBar style={{marginTop:10 ,background: '#000016', position: 'relative' }}>
 			<Toolbar
 				style={{
 					display: 'flex',
@@ -49,8 +58,8 @@ export default function NavTabs() {
 					width: '100%',
 					height: '60px',
 				}}>
-				<Button>
-					<img src={logo} style={{ marginTop: 5 }} width='50px' />
+				<Button LinkComponent={RouterLink} to='/'onClick={() => {setValue(0)}}>
+					<img src={logo} style={{marginLeft: 5, marginTop: 10 }} width='65px' />
 				</Button>
 				<Box>
 					<Tabs
@@ -62,7 +71,7 @@ export default function NavTabs() {
 						TabIndicatorProps={{
 							sx: {
 								bottom: 0,
-                                marginLeft: '4.5%',
+                                marginLeft: '4.4%',
 								height: 3,
                                 maxWidth: 60,
 								borderRadius: 10,
@@ -97,6 +106,7 @@ export default function NavTabs() {
 							sx={{ color: '#ffffff' }}
 						/>
 					</Tabs>
+					<Button variant=''>Sign up</Button>
 				</Box>
 			</Toolbar>
 		</AppBar>
