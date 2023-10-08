@@ -1,19 +1,34 @@
-import { useEffect } from "react"
-import Nav from "../../components/navigation/navigation"
-import './games.css'
+import {
+	Typography,
+	Button,
+	IconButton,
+	Fab,
+	Box,
+	AppBar,
+	Toolbar,
+	Drawer,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	Divider,
+	Grid,
+	Paper,
+	Card,
+	CardHeader,
+	CardMedia,
+	CardContent,
+	CardActions,
+	CssBaseline,
+} from '@mui/material';
+import './games.css';
 
 function Games() {
-
-    useEffect(() => {
-        console.log("pass")
-    })
-
-    return (
-        <>
-            <main id='games_main'>
-                <h1 id='games_main-h1'>Games</h1>
-            </main>
-        </>)
+	return (
+		<>
+			 <Typography variant='h3' align='center'>Games</Typography>
+		</>
+	);
 }
 
-export default Games
+export default Games;

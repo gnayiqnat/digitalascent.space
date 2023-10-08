@@ -1,4 +1,26 @@
-import Nav from "../../components/navigation/navigation"
+import {
+	Typography,
+	Button,
+	IconButton,
+	Fab,
+	Box,
+	AppBar,
+	Toolbar,
+	Drawer,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	Divider,
+	Grid,
+	Paper,
+	Card,
+	CardHeader,
+	CardMedia,
+	CardContent,
+	CardActions,
+	CssBaseline,
+} from '@mui/material';
 import './credits.css'
 
 function Credits() {
@@ -7,9 +29,7 @@ function Credits() {
 
     return (
         <>
-            <main id='credits_main'>
-                <h1 id='credits_main-h1'>Credits</h1>
-            </main>
+             <Typography variant='h3' align='center'>Credits</Typography>
         </>)
 }
 

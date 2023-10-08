@@ -1,4 +1,26 @@
-import Nav from "../../components/navigation/navigation"
+import {
+	Typography,
+	Button,
+	IconButton,
+	Fab,
+	Box,
+	AppBar,
+	Toolbar,
+	Drawer,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	Divider,
+	Grid,
+	Paper,
+	Card,
+	CardHeader,
+	CardMedia,
+	CardContent,
+	CardActions,
+	CssBaseline,
+} from '@mui/material';
 import './about.css'
 
 function About() {
@@ -7,9 +29,7 @@ function About() {
 
     return (
         <>
-            <main id='about_main'>
-                <h1 id='about_main-h1'>About</h1>
-            </main>
+         <Typography variant='h3' align='center'>About</Typography>
         </>)
 }
 

@@ -1,4 +1,26 @@
-import Nav from "../../components/navigation/navigation"
+import {
+	Typography,
+	Button,
+	IconButton,
+	Fab,
+	Box,
+	AppBar,
+	Toolbar,
+	Drawer,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	Divider,
+	Grid,
+	Paper,
+	Card,
+	CardHeader,
+	CardMedia,
+	CardContent,
+	CardActions,
+	CssBaseline,
+} from '@mui/material';
 import './homepage.css'
 
 function Section1() {
@@ -7,9 +29,7 @@ function Section1() {
 
     return (
         <>
-            <main id='main'>
-                <h1 id='main-h1'>Home</h1>
-            </main>
+        <Typography variant='h3' align='center'>Homepage</Typography>
         </>)
 }
 

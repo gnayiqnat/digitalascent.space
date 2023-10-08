@@ -1,8 +1,31 @@
+import {
+	Typography,
+	Button,
+	IconButton,
+	Fab,
+	Box,
+	AppBar,
+	Toolbar,
+	Drawer,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	Divider,
+	Grid,
+	Paper,
+	Card,
+	CardHeader,
+	CardMedia,
+	CardContent,
+	CardActions,
+	CssBaseline,
+} from '@mui/material';
 import './404.css'
 
 function NotFound () {
     return (
-        <h1>404 Not Found!</h1>
+        <Typography variant='h3' align='center'>404 Not found!</Typography>
     )
 }
 
