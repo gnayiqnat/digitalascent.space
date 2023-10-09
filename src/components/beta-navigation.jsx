@@ -49,7 +49,7 @@ export default function NavTabs() {
 	}})
 	
 	return (
-		<AppBar style={{marginTop:10 ,background: '#000016', position: 'relative' }}>
+		<AppBar style={{marginTop:15 ,background: '#000016', position: 'relative' }}>
 			<Toolbar
 				style={{
 					display: 'flex',
@@ -59,7 +59,7 @@ export default function NavTabs() {
 					height: '60px',
 				}}>
 				<Button LinkComponent={RouterLink} to='/'onClick={() => {setValue(0)}}>
-					<img src={logo} style={{marginLeft: 5, marginTop: 10 }} width='65px' />
+					<img src={logo} style={{marginLeft: 5, marginTop: 0 }} width='65px' />
 				</Button>
 				<Box>
 					<Tabs
@@ -70,35 +70,36 @@ export default function NavTabs() {
 						textColor='primary'
 						TabIndicatorProps={{
 							sx: {
-								bottom: 0,
-                                marginLeft: '4.4%',
+								bottom: 1,
+                                marginLeft: '6.4%',
 								height: 3,
-                                maxWidth: 60,
+                                maxWidth: 45,
 								borderRadius: 10,
+								backgroundcolor: '#5a4a69',
 							},
 						}}>
-						<Tab
+						<Tab disableRipple
 							label='Home'
 							index={0}
 							component={RouterLink}
 							to={'/'}
 							sx={{ color: '#ffffff' }}
 						/>
-						<Tab
+						<Tab disableRipple
 							label='Games'
 							index={1}
 							component={RouterLink}
 							to={'/games'}
 							sx={{ color: '#ffffff' }}
 						/>{' '}
-						<Tab
+						<Tab disableRipple
 							label='Credits'
 							index={1}
 							component={RouterLink}
 							to={'/credits'}
 							sx={{ color: '#ffffff'}}
 						/>{' '}
-						<Tab
+						<Tab disableRipple
 							label='About'
 							index={1}
 							component={RouterLink}

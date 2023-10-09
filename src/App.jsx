@@ -17,7 +17,7 @@ import Games from './pages/games/games';
 import Credits from './pages/credits/credits';
 import About from './pages/about/about';
 import NotFound from './pages/404/404';
-import logo from './assets/logo.jpeg';
+import logo from './assets/logo-large.png';
 import NavTabs from './components/beta-navigation';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
@@ -45,6 +45,7 @@ function App() {
 					</Routes>
 				</Router>
 			</ThemeProvider>
+			<img style={{height:'110vh',position:'absolute',left:'60vw',top:'-5vh', zIndex:9999,opacity: 0.04, transform: 'rotate(5deg)', pointerEvents:'none'}} src={logo} />
 		</>
 	);
 }
