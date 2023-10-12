@@ -27,6 +27,7 @@ function Games() {
 	return (
 		<>
 			 <Typography variant='h3' align='center'>Games</Typography>
+			 <Grid cotainer ><Grid item></Grid></Grid>
 		</>
 	);
 }

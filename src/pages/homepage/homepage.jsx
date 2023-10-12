@@ -26,7 +26,6 @@ import './homepage.css';
 import { createTheme, ThemeProvider } from '@mui/material';
 
 import { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
 
 
 function Homepage() {
@@ -49,6 +48,7 @@ function Section1() {
 			<Typography
 				fontFamily='Monoton'
 				variant='h1'
+				fontSize={'clamp(30px, 20vw, 105px)'}
 				fontWeight={400}
 				color='primary'
 				marginTop={-15}>
