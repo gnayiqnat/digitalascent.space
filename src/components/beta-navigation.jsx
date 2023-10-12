@@ -191,7 +191,7 @@ function MobileNavigation() {
 				onClick={() => {
 					setIsDrawerOpen(true);
 				}}>
-				<MenuRoundedIcon style={{ fontSize: 55 }} />
+				<MenuRoundedIcon style={{ fontSize: 40 }} />
 			</IconButton>
 			<Drawer
 				anchor='left'
@@ -217,7 +217,7 @@ function MobileNavigation() {
 					</Box>
 					<Grid container flexDirection='column' marginTop={'10vh'}>
 						<Button
-							style={{ height: 'clamp(60px, 10vh, 150px)' }}
+							style={{ height: 'clamp(60px, 10vh, 150px)', fontSize:'1.5rem'}}
 							component={RouterLink}
 							to={'/'}
 							onClick={() => {
@@ -226,7 +226,7 @@ function MobileNavigation() {
 							Home
 						</Button>
 						<Button
-							style={{ height: 'clamp(60px, 10vh, 150px)' }}
+							style={{ height: 'clamp(60px, 10vh, 150px)', fontSize:'1.5rem' }}
 							component={RouterLink}
 							to={'/games'}
 							onClick={() => {
@@ -235,7 +235,7 @@ function MobileNavigation() {
 							Games
 						</Button>
 						<Button
-							style={{ height: 'clamp(60px, 10vh, 150px)' }}
+							style={{ height: 'clamp(60px, 10vh, 150px)', fontSize:'1.5rem' }}
 							component={RouterLink}
 							to={'/credits'}
 							onClick={() => {
@@ -244,7 +244,7 @@ function MobileNavigation() {
 							Credits
 						</Button>
 						<Button
-							style={{ height: 'clamp(60px, 10vh, 150px)' }}
+							style={{ height: 'clamp(60px, 10vh, 150px)', fontSize:'1.5rem' }}
 							component={RouterLink}
 							to={'/about'}
 							onClick={() => {
