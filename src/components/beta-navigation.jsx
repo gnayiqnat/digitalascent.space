@@ -131,7 +131,7 @@ export default function NavTabs() {
 							index={0}
 							component={RouterLink}
 							to={'/'}
-							sx={{ color: '#ffffff' }}
+							sx={{ color: 'primary' }}
 						/>
 						<Tab
 							disableRipple
@@ -139,7 +139,7 @@ export default function NavTabs() {
 							index={1}
 							component={RouterLink}
 							to={'/games'}
-							sx={{ color: '#ffffff' }}
+							sx={{ color: 'primary' }}
 						/>{' '}
 						<Tab
 							disableRipple
@@ -147,7 +147,7 @@ export default function NavTabs() {
 							index={1}
 							component={RouterLink}
 							to={'/credits'}
-							sx={{ color: '#ffffff' }}
+							sx={{ color: 'primary' }}
 						/>{' '}
 						<Tab
 							disableRipple
@@ -155,7 +155,7 @@ export default function NavTabs() {
 							index={1}
 							component={RouterLink}
 							to={'/about'}
-							sx={{ color: '#ffffff' }}
+							sx={{ color: 'primary' }}
 						/>
 					</Tabs>
 				)}
