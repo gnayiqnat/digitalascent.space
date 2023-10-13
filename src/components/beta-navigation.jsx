@@ -123,7 +123,6 @@ export default function NavTabs() {
 								maxWidth: 45,
 								borderRadius: 10,
 								backgroundcolor: '#5a4a69',
-
 							},
 						}}>
 						<Tab
@@ -160,24 +159,6 @@ export default function NavTabs() {
 						/>
 					</Tabs>
 				)}
-				<Box>
-					<>
-						<Button
-							variant='contained'
-							sx={{ color: 'black', borderRadius: 4, marginRight: 1 }}
-							LinkComponent={RouterLink}
-							to='/signup'>
-							Sign Up
-						</Button>
-						<Button
-							variant='outlined'
-							sx={{ color: '#ffffff', borderRadius: 4 }}
-							LinkComponent={RouterLink}
-							to='/login'>
-							Log in
-						</Button>
-					</>
-				</Box>
 			</Toolbar>
 		</AppBar>
 	);
@@ -218,7 +199,11 @@ function MobileNavigation() {
 					</Box>
 					<Grid container flexDirection='column' marginTop={'10vh'}>
 						<Button
-							style={{ height: 'clamp(60px, 10vh, 150px)', fontSize:'1.5rem'}}
+							style={{
+								height: 'clamp(60px, 10vh, 150px)',
+								fontSize: '1.5rem',
+								fontWeight: 300,
+							}}
 							component={RouterLink}
 							to={'/'}
 							onClick={() => {
@@ -227,7 +212,11 @@ function MobileNavigation() {
 							Home
 						</Button>
 						<Button
-							style={{ height: 'clamp(60px, 10vh, 150px)', fontSize:'1.5rem' }}
+							style={{
+								height: 'clamp(60px, 10vh, 150px)',
+								fontSize: '1.5rem',
+								fontWeight: 300,
+							}}
 							component={RouterLink}
 							to={'/games'}
 							onClick={() => {
@@ -236,7 +225,11 @@ function MobileNavigation() {
 							Games
 						</Button>
 						<Button
-							style={{ height: 'clamp(60px, 10vh, 150px)', fontSize:'1.5rem' }}
+							style={{
+								height: 'clamp(60px, 10vh, 150px)',
+								fontSize: '1.5rem',
+								fontWeight: 300,
+							}}
 							component={RouterLink}
 							to={'/credits'}
 							onClick={() => {
@@ -245,7 +238,11 @@ function MobileNavigation() {
 							Credits
 						</Button>
 						<Button
-							style={{ height: 'clamp(60px, 10vh, 150px)', fontSize:'1.5rem' }}
+							style={{
+								height: 'clamp(60px, 10vh, 150px)',
+								fontSize: '1.5rem',
+								fontWeight: 300,
+							}}
 							component={RouterLink}
 							to={'/about'}
 							onClick={() => {
@@ -257,5 +254,28 @@ function MobileNavigation() {
 				</Box>
 			</Drawer>
 		</>
+	);
+}
+
+function SignupLoginButtons() {
+	return (
+		<Box>
+			<>
+				<Button
+					variant='contained'
+					sx={{ color: 'black', borderRadius: 4, marginRight: 1 }}
+					LinkComponent={RouterLink}
+					to='/signup'>
+					Sign Up
+				</Button>
+				<Button
+					variant='outlined'
+					sx={{ color: '#ffffff', borderRadius: 4 }}
+					LinkComponent={RouterLink}
+					to='/login'>
+					Log in
+				</Button>
+			</>
+		</Box>
 	);
 }

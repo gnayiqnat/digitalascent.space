@@ -18,14 +18,15 @@ import NavTabs from './components/beta-navigation';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Signup from './pages/sign-up/signup';
 import Login from './pages/log-in/login';
-import DatabaseConnectionCheck from './components/database';
+import DatabaseConnectionCheck from './pages/dbcheck/dbcheck';
+
 
 const theme = createTheme({
 	palette: {
 		mode: 'dark',
-		primary: {main: '#FFFFFF' },
+		primary: { main: '#FFFFFF' },
 		background: { default: '#000016' },
-		text: {primary: '#ffffff'},
+		text: { primary: '#ffffff' },
 	},
 });
 
@@ -43,7 +44,10 @@ function App() {
 						<Route exact path='/about' element={<About />}></Route>
 						<Route exact path='/signup' element={<Signup />}></Route>
 						<Route exact path='/login' element={<Login />}></Route>
-						<Route exact path='/dbcheck' element={<DatabaseConnectionCheck />}></Route>
+						<Route
+							exact
+							path='/dbcheck'
+							element={<DatabaseConnectionCheck />}></Route>
 						<Route exact path='*' element={<NotFound />}></Route>
 					</Routes>
 				</Router>
