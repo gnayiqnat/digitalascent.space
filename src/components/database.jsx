@@ -3,8 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import { Typography, getSnackbarContentUtilityClass } from '@mui/material';
 
 const supabaseUrl = 'https://jvgvyyjbukqegrisvrrd.supabase.co';
-const supabaseKey = process.env.supabaseKey
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseApiKey =  ENV.supabaseKey
+const supabase = createClient(supabaseUrl, supabaseApiKey);
 
 function DatabaseConnectionCheck() {
 	const [errorMsg, setErrorMsg] = useState();
