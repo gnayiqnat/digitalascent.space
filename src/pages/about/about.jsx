@@ -22,7 +22,6 @@ import {
 	CardActions,
 	CssBaseline,
 } from '@mui/material';
-import './about.css'
 
 function About() {
 

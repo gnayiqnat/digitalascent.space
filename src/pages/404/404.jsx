@@ -21,7 +21,6 @@ import {
 	CardActions,
 	CssBaseline,
 } from '@mui/material';
-import './404.css'
 
 function NotFound () {
     return (

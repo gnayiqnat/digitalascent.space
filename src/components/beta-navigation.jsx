@@ -123,6 +123,7 @@ export default function NavTabs() {
 								maxWidth: 45,
 								borderRadius: 10,
 								backgroundcolor: '#5a4a69',
+
 							},
 						}}>
 						<Tab

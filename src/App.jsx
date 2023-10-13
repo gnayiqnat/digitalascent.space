@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 
 /* Fonts */
 import '@fontsource/roboto/300.css';
@@ -17,8 +16,9 @@ import NotFound from './pages/404/404';
 import logo from './assets/logo-large.png';
 import NavTabs from './components/beta-navigation';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import SignUp from './pages/sign-up/signup';
+import Signup from './pages/sign-up/signup';
 import Login from './pages/log-in/login';
+import DatabaseConnectionCheck from './components/database';
 
 const theme = createTheme({
 	palette: {
@@ -41,6 +41,9 @@ function App() {
 						<Route exact path='/games' element={<Games />}></Route>
 						<Route exact path='/credits' element={<Credits />}></Route>
 						<Route exact path='/about' element={<About />}></Route>
+						<Route exact path='/signup' element={<Signup />}></Route>
+						<Route exact path='/login' element={<Login />}></Route>
+						<Route exact path='/dbcheck' element={<DatabaseConnectionCheck />}></Route>
 						<Route exact path='*' element={<NotFound />}></Route>
 					</Routes>
 				</Router>

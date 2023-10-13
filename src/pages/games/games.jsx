@@ -21,7 +21,6 @@ import {
 	CardActions,
 	CssBaseline,
 } from '@mui/material';
-import './games.css';
 
 function Games() {
 	return (

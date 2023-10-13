@@ -22,7 +22,6 @@ import {
 	CssBaseline,
 	Container,
 } from '@mui/material';
-import './homepage.css';
 import { createTheme, ThemeProvider } from '@mui/material';
 
 import { useEffect, useState } from 'react';

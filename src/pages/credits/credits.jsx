@@ -21,7 +21,6 @@ import {
 	CardActions,
 	CssBaseline,
 } from '@mui/material';
-import './credits.css'
 
 function Credits() {
 
