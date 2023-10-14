@@ -33,7 +33,8 @@ import {
 	Routes,
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import logo from '../assets/logo.jpeg';
+import logo from '../assets/logo-large.png';
+import { motion } from 'framer-motion';
 
 export default function NavTabs() {
 	const [value, setValue] = useState(0);
@@ -87,17 +88,12 @@ export default function NavTabs() {
 					justifyContent: 'space-between',
 					width: '100%',
 					height: '60px',
+					paddingLeft: 3,
 				}}>
 				{isBelow768p ? (
 					<MobileNavigation />
 				) : (
-					<Button
-						disableRipple
-						LinkComponent={RouterLink}
-						to='/'
-						onClick={() => {
-							setValue(0);
-						}}>
+					<Button disableRipple LinkComponent={RouterLink} to='/'>
 						<img
 							src={logo}
 							style={{ marginLeft: 5, marginTop: 10 }}
@@ -129,7 +125,7 @@ export default function NavTabs() {
 							disableRipple
 							label='Home'
 							index={0}
-							component={RouterLink}
+							LinkComponent={RouterLink}
 							to={'/'}
 							sx={{ color: 'primary' }}
 						/>
@@ -177,6 +173,7 @@ function MobileNavigation() {
 			</IconButton>
 			<Drawer
 				anchor='left'
+				marginLeft={-10}
 				open={isDrawerOpen}
 				onClose={() => {
 					setIsDrawerOpen(false);

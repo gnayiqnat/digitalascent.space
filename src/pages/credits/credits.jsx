@@ -21,15 +21,35 @@ import {
 	CardActions,
 	CssBaseline,
 } from '@mui/material';
+import { motion } from 'framer-motion';
+
+const routeVariants = {
+	initial: {
+		y: '5vh',
+		opacity: 0,
+	},
+	final: {
+		y: '0vh',
+		opacity: 1,
+
+	},
+};
 
 function Credits() {
-
-
-
-    return (
-        <>
-             <Typography variant='h3' align='center'>Credits</Typography>
-        </>)
+	return (
+		<motion.div
+			variants={routeVariants}
+			initial='initial'
+			animate='final'
+			>
+			<Typography
+				fontFamily='Monoton'
+				variant='h3'
+				align='center'>
+				CREDITS
+			</Typography>
+		</motion.div>
+	);
 }
 
-export default Credits
+export default Credits;
