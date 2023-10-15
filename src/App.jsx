@@ -92,7 +92,7 @@ function RoutesWithAnimation() {
 			/>
 			<Route exact path='/signup' element={<Signup />}></Route>
 			<Route exact path='/login' element={<Login />}></Route>
-			<Route exact path='*' element={<NotFound />}></Route>
+			<Route exact path='*' status={404} element={<NotFound />}></Route>
 		</Routes>
 	);
 }

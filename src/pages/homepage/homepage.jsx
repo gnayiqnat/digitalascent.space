@@ -22,7 +22,10 @@ import {
 	CssBaseline,
 	Container,
 } from '@mui/material';
-import {motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Link as RouterLink } from 'react-router-dom';
+import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
+import { useState } from 'react';
 
 function Homepage(props) {
 	return (
@@ -36,6 +39,7 @@ function Homepage(props) {
 }
 
 function Section1() {
+	const [buttonHasClicked, setButtonHasClicked] = useState(false);
 	return (
 		<Grid
 			container
@@ -43,7 +47,7 @@ function Section1() {
 			direction='column'
 			alignItems='center'
 			justifyContent='center'
-			sx={{ minHeight: '80vh' }}>
+			sx={{ marginTop: '13vh' }}>
 			<Box>
 				<Typography
 					fontFamily='Monoton'

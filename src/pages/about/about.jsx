@@ -44,10 +44,10 @@ function AboutSec1() {
 					justifyContent: 'center',
 					flexDirection: 'column',
 				}}>
-				<Typography variant='h3' align='center' fontFamily='Monoton'>
+				<Typography gutterBottom variant='h3' align='center' fontFamily='Monoton'>
 					ABOUT
 				</Typography>
-				<Typography variant='p' align='center'>
+				<Typography color={'white'} fontWeight={300} variant='p' align='center'>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis
 					sapien sit amet rutrum egestas. Aliquam semper mauris ac lectus
 					elementum vestibulum. Ut consectetur consectetur rhoncus. Donec a
