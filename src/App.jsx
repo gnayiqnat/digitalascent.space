@@ -34,7 +34,7 @@ const theme = createTheme({
 	},
 });
 
-function App() {
+export default function App() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
@@ -50,8 +50,6 @@ function App() {
 	);
 }
 
-export default App;
-
 function LocationProvider({ children }) {
 	return <AnimatePresence>{children}</AnimatePresence>;
 }
@@ -65,6 +63,7 @@ function RoutesWithAnimation() {
 		final: {
 			y: '0vh',
 			opacity: 1,
+			transition: { delay: 0.15 },
 		},
 	};
 	const location = useLocation();
