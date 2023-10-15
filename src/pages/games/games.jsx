@@ -24,23 +24,26 @@ import {
 import { motion } from 'framer-motion';
 
 import * as React from 'react';
-const routeVariants = {
-	initial: {
-		y: '5vh',
-		opacity: 0,
-	},
-	final: {
-		y: '0vh',
-		opacity: 1,
-	},
-};
-export default function Games() {
+
+export default function Games(props) {
 	return (
 		<>
 			<motion.div
-				variants={routeVariants}
+				variants={props.routeVariants}
 				initial='initial'
-				animate='final'><Typography variant='h3' fontFamily='Monoton' textAlign='center'>GAMES</Typography></motion.div>
+				animate='final'>
+				<GamesSec1 />
+			</motion.div>
+		</>
+	);
+}
+
+function GamesSec1() {
+	return (
+		<>
+			<Typography fontFamily='Monoton' variant='h3' align='center'>
+				GAMES
+			</Typography>
 		</>
 	);
 }

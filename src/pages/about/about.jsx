@@ -24,24 +24,20 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 
-const routeVariants = {
-	initial: {
-		y: '5vh',
-		opacity: 0,
-	},
-	final: {
-		y: '0vh',
-		opacity: 1,
-	},
-};
-
-function About() {
+export default function About(props) {
 	return (
 		<motion.div
-			variants={routeVariants}
+			variants={props.routeVariants}
 			initial='initial'
-			animate='final'
-			>
+			animate='final'>
+			<AboutSec1 />
+		</motion.div>
+	);
+}
+
+function AboutSec1() {
+	return (
+		<>
 			<Container
 				style={{
 					display: 'flex',
@@ -102,8 +98,6 @@ function About() {
 					facilisis velit, ut tincidunt libero.{' '}
 				</Typography>
 			</Container>
-		</motion.div>
+		</>
 	);
 }
-
-export default About;

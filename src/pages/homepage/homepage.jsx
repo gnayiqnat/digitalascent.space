@@ -22,28 +22,16 @@ import {
 	CssBaseline,
 	Container,
 } from '@mui/material';
-import { motion } from 'framer-motion';
+import {motion } from 'framer-motion';
 
-import { useEffect, useState } from 'react';
-
-const routeVariants = {
-	initial: {
-		y: '5vh',
-		opacity: 0,
-	},
-	final: {
-		y: '0vh',
-		opacity: 1,
-
-	},
-};
-
-
-function Homepage() {
+function Homepage(props) {
 	return (
-		<>
+		<motion.div
+			variants={props.routeVariants}
+			initial='initial'
+			animate='final'>
 			<Section1 />
-		</>
+		</motion.div>
 	);
 }
 
@@ -56,22 +44,17 @@ function Section1() {
 			alignItems='center'
 			justifyContent='center'
 			sx={{ minHeight: '80vh' }}>
-			<motion.div
-				variants={routeVariants}
-				initial='initial'
-				animate='final'>
-				<Box>
-					<Typography
-						fontFamily='Monoton'
-						variant='h1'
-						fontSize={'clamp(30px, 20vw, 105px)'}
-						fontWeight={400}
-						color='primary'
-						userSelect='none'>
-						DIGITAL ASCENT
-					</Typography>
-				</Box>
-			</motion.div>
+			<Box>
+				<Typography
+					fontFamily='Monoton'
+					variant='h1'
+					fontSize={'clamp(30px, 20vw, 105px)'}
+					fontWeight={400}
+					color='primary'
+					userSelect='none'>
+					DIGITAL ASCENT
+				</Typography>
+			</Box>
 		</Grid>
 	);
 }

@@ -25,9 +25,6 @@ import Signup from './pages/sign-up/signup';
 import Login from './pages/log-in/login';
 import { motion, AnimatePresence } from 'framer-motion';
 
-
-
-  
 const theme = createTheme({
 	palette: {
 		mode: 'dark',
@@ -58,15 +55,42 @@ export default App;
 function LocationProvider({ children }) {
 	return <AnimatePresence>{children}</AnimatePresence>;
 }
+
 function RoutesWithAnimation() {
+	const routeVariants = {
+		initial: {
+			y: '5vh',
+			opacity: 0,
+		},
+		final: {
+			y: '0vh',
+			opacity: 1,
+		},
+	};
 	const location = useLocation();
 
 	return (
 		<Routes location={location} key={location.key}>
-			<Route exact path='/' element={<Homepage />}></Route>
-			<Route exact path='/games' element={<Games />}></Route>
-			<Route exact path='/credits' element={<Credits />}></Route>
-			<Route exact path='/about' element={<About />}></Route>
+			<Route
+				exact
+				path='/'
+				element={<Homepage routeVariants={routeVariants} />}
+			/>
+			<Route
+				exact
+				path='/games'
+				element={<Games routeVariants={routeVariants} />}
+			/>
+			<Route
+				exact
+				path='/credits'
+				element={<Credits routeVariants={routeVariants} />}
+			/>
+			<Route
+				exact
+				path='/about'
+				element={<About routeVariants={routeVariants} />}
+			/>
 			<Route exact path='/signup' element={<Signup />}></Route>
 			<Route exact path='/login' element={<Login />}></Route>
 			<Route exact path='*' element={<NotFound />}></Route>

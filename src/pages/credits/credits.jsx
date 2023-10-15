@@ -23,33 +23,23 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 
-const routeVariants = {
-	initial: {
-		y: '5vh',
-		opacity: 0,
-	},
-	final: {
-		y: '0vh',
-		opacity: 1,
-
-	},
-};
-
-function Credits() {
+export default function Credits(props) {
 	return (
 		<motion.div
-			variants={routeVariants}
+			variants={props.routeVariants}
 			initial='initial'
-			animate='final'
-			>
-			<Typography
-				fontFamily='Monoton'
-				variant='h3'
-				align='center'>
-				CREDITS
-			</Typography>
+			animate='final'>
+			<CreditsSec1 />
 		</motion.div>
 	);
 }
 
-export default Credits;
+function CreditsSec1() {
+	return (
+		<>
+			<Typography fontFamily='Monoton' variant='h3' align='center'>
+				CREDITS
+			</Typography>
+		</>
+	);
+}
