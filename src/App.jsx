@@ -24,6 +24,7 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Signup from './pages/sign-up/signup';
 import Login from './pages/log-in/login';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 
 const theme = createTheme({
 	palette: {
@@ -46,6 +47,7 @@ export default function App() {
 					</LocationProvider>
 				</Router>
 			</ThemeProvider>
+			<Analytics />
 		</>
 	);
 }
