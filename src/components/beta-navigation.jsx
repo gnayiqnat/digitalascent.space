@@ -31,26 +31,31 @@ import {
 	BrowserRouter as Router,
 	Link as RouterLink,
 	Routes,
+	useLocation,
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import logo from '../assets/logo-large.png';
 import { motion } from 'framer-motion';
 
 export default function NavTabs() {
-	const [value, setValue] = useState(0);
+	const [value, setValue] = useState();
 
 	const handleChange = (_e, newValue) => {
 		setValue(newValue);
 	};
 
-	const windowURL = window.location.href;
+	const windowURL = useLocation().pathname;
 	useEffect(() => {
-		if (windowURL.includes('/games')) {
+		if (windowURL === '/') {
+			setValue(0);
+		} else if (windowURL === '/games') {
 			setValue(1);
-		} else if (windowURL.includes('credits')) {
+		} else if (windowURL === '/credits') {
 			setValue(2);
-		} else if (windowURL.includes('about')) {
+		} else if (windowURL === '/about') {
 			setValue(3);
+		} else {
+			setValue(null);
 		}
 	});
 
@@ -58,7 +63,7 @@ export default function NavTabs() {
 		window.innerWidth < 768 ? true : false
 	);
 
-	function checkWidth() {
+	window.addEventListener('resize', () => {
 		if (window.innerWidth < 768) {
 			if (isBelow768p === false) {
 				setIsBelow768(true);
@@ -68,15 +73,12 @@ export default function NavTabs() {
 				setIsBelow768(false);
 			}
 		}
-	}
-	window.addEventListener('resize', () => {
-		checkWidth();
 	});
 
 	return (
 		<AppBar
 			style={{
-				marginTop: 0,
+				marginBottom: 40,
 				background: '#000016',
 				position: 'relative',
 			}}
@@ -91,7 +93,15 @@ export default function NavTabs() {
 					paddingLeft: 3,
 				}}>
 				{isBelow768p ? (
-					<MobileNavigation />
+					<>
+						<Button disableRipple LinkComponent={RouterLink} to='/'>
+							<img
+								style={{ marginLeft: 5, marginTop: 15, width: '65px' }}
+								src={logo}
+							/>
+						</Button>
+						<MobileNavigation />
+					</>
 				) : (
 					<Button disableRipple LinkComponent={RouterLink} to='/'>
 						<img
@@ -104,56 +114,59 @@ export default function NavTabs() {
 				{isBelow768p ? (
 					<></>
 				) : (
-					<Tabs
-						id='tab'
-						value={value}
-						onChange={handleChange}
-						aria-label='Navigation'
-						indicatorColor='primary'
-						textColor='primary'
-						TabIndicatorProps={{
-							sx: {
-								bottom: 1,
-								marginLeft: '6.4%',
-								height: 3,
-								maxWidth: 45,
-								borderRadius: 10,
-								backgroundcolor: '#5a4a69',
-							},
-						}}>
-						<Tab
-							disableRipple
-							label='Home'
-							index={0}
-							LinkComponent={RouterLink}
-							to={'/'}
-							sx={{ color: 'primary' }}
-						/>
-						<Tab
-							disableRipple
-							label='Games'
-							index={1}
-							component={RouterLink}
-							to={'/games'}
-							sx={{ color: 'primary' }}
-						/>{' '}
-						<Tab
-							disableRipple
-							label='Credits'
-							index={1}
-							component={RouterLink}
-							to={'/credits'}
-							sx={{ color: 'primary' }}
-						/>{' '}
-						<Tab
-							disableRipple
-							label='About'
-							index={1}
-							component={RouterLink}
-							to={'/about'}
-							sx={{ color: 'primary' }}
-						/>
-					</Tabs>
+					<>
+						<Tabs
+							id='tab'
+							value={value}
+							onChange={handleChange}
+							aria-label='Navigation'
+							indicatorColor='primary'
+							textColor='primary'
+							TabIndicatorProps={{
+								sx: {
+									bottom: 1,
+									marginLeft: '6.4%',
+									height: 3,
+									maxWidth: 45,
+									borderRadius: 10,
+									backgroundcolor: '#5a4a69',
+									display: value === null ? 'none' : 'block',
+								},
+							}}>
+							<Tab
+								disableRipple
+								label='Home'
+								index={0}
+								LinkComponent={RouterLink}
+								to={'/'}
+								sx={{ color: 'primary' }}
+							/>
+							<Tab
+								disableRipple
+								label='Games'
+								index={1}
+								component={RouterLink}
+								to={'/games'}
+								sx={{ color: 'primary' }}
+							/>{' '}
+							<Tab
+								disableRipple
+								label='Credits'
+								index={1}
+								component={RouterLink}
+								to={'/credits'}
+								sx={{ color: 'primary' }}
+							/>{' '}
+							<Tab
+								disableRipple
+								label='About'
+								index={1}
+								component={RouterLink}
+								to={'/about'}
+								sx={{ color: 'primary' }}
+							/>
+						</Tabs>
+					</>
 				)}
 			</Toolbar>
 		</AppBar>
@@ -171,6 +184,7 @@ function MobileNavigation() {
 				}}>
 				<MenuRoundedIcon style={{ fontSize: 40 }} />
 			</IconButton>
+
 			<Drawer
 				anchor='left'
 				marginLeft={-10}
