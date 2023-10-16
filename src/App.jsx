@@ -11,6 +11,7 @@ import {
 	BrowserRouter as Router,
 	Routes,
 	useLocation,
+	redirect,
 } from 'react-router-dom';
 
 import Homepage from './pages/homepage/homepage';
@@ -19,35 +20,57 @@ import Credits from './pages/credits/credits';
 import About from './pages/about/about';
 import NotFound from './pages/404/404';
 import logo from './assets/logo-large.png';
-import NavTabs from './components/beta-navigation';
+import NavTabs from './components/navigation';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Signup from './pages/sign-up/signup';
 import Login from './pages/log-in/login';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Analytics } from '@vercel/analytics/react';
 
-const theme = createTheme({
+const lightTheme = createTheme({
+	palette: {
+		mode: 'light',
+		primary: {
+			main: '#000000',
+			text: '#000000',
+			background: '#ffffff',
+		},
+		secondary: {
+			main: '#757575',
+			text: '#757575',
+		},
+	},
+});
+
+const darkTheme = createTheme({
 	palette: {
 		mode: 'dark',
-		primary: { main: '#FFFFFF' },
-		background: { default: '#000016' },
-		text: { primary: '#ffffff' },
+
+		primary: {
+			main: '#ffffff',
+			background: '#121212', 
+			text: '#ffffff',
+		},
+		secondary: {
+			main: '#ffffff',
+			text: '#757575',
+		},
 	},
 });
 
 export default function App() {
+	const [themeMode, setThemeMode] = useState('light');
+
 	return (
 		<>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
 				<CssBaseline />
 				<Router>
 					<LocationProvider>
-						<NavTabs />
+						<NavTabs themeMode={themeMode} setThemeMode={setThemeMode} />
 						<RoutesWithAnimation />
 					</LocationProvider>
 				</Router>
 			</ThemeProvider>
-			<Analytics />
 		</>
 	);
 }
@@ -92,9 +115,9 @@ function RoutesWithAnimation() {
 				path='/about'
 				element={<About routeVariants={routeVariants} />}
 			/>
-			<Route exact path='/signup' element={<Signup />}></Route>
-			<Route exact path='/login' element={<Login />}></Route>
-			<Route exact path='*' status={404} element={<NotFound />}></Route>
+			<Route exact path='/signup' element={<Signup />} />
+			<Route exact path='/login' element={<Login />} />
+			<Route exact path='*' element={<NotFound />} />
 		</Routes>
 	);
 }
