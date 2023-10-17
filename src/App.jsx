@@ -21,7 +21,6 @@ import Credits from './pages/credits/credits';
 import About from './pages/about/about';
 import NotFound from './pages/404/404';
 import NavTabs from './components/navigation';
-import LoadingSplashScreen from './components/loading';
 
 const lightTheme = createTheme({
 	palette: {
@@ -44,7 +43,7 @@ const darkTheme = createTheme({
 
 		primary: {
 			main: '#ffffff',
-			background: '#121212',
+			background: '#000016',
 			text: '#ffffff',
 		},
 		secondary: {
@@ -56,7 +55,6 @@ const darkTheme = createTheme({
 
 export default function App() {
 	const [themeMode, setThemeMode] = useState('light');
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
 	return (
 		<>
