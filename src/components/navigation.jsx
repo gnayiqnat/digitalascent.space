@@ -28,6 +28,7 @@ import {
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
+
 import { motion } from 'framer-motion';
 import {
 	BrowserRouter as Router,
@@ -39,6 +40,7 @@ import { useState, useEffect } from 'react';
 import MobileNavigation from './navigation-mobile';
 import logo from '../assets/logo-large.png';
 import logo_dark from '../assets/logo-large-black.png';
+import { useMediaQuery } from 'react-responsive';
 
 export default function NavTabs(props) {
 	const [value, setValue] = useState(0);
@@ -74,21 +76,7 @@ export default function NavTabs(props) {
 		}
 	});
 
-	const [isBelow768p, setIsBelow768] = useState(
-		window.innerWidth < 768 ? true : false
-	);
-
-	window.addEventListener('resize', () => {
-		if (window.innerWidth < 768) {
-			if (isBelow768p === false) {
-				setIsBelow768(true);
-			}
-		} else {
-			if (isBelow768p === true) {
-				setIsBelow768(false);
-			}
-		}
-	});
+	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
 	return (
 		<AppBar
@@ -107,7 +95,7 @@ export default function NavTabs(props) {
 					height: '60px',
 					paddingLeft: 3,
 				}}>
-				{isBelow768p ? (
+				{isMobile ? (
 					<>
 						<Button disableRipple LinkComponent={RouterLink} to='/'>
 							<img
@@ -136,9 +124,7 @@ export default function NavTabs(props) {
 						/>
 					</Button>
 				)}
-				{isBelow768p ? (
-					<></>
-				) : (
+				{!isMobile && (
 					<>
 						<Tabs
 							id='tab'
