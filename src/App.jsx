@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 /* Fonts */
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -56,19 +56,17 @@ const darkTheme = createTheme({
 
 export default function App() {
 	const [themeMode, setThemeMode] = useState('light');
-	const [isLoading, setIsLoading] = useState(true);
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
 	return (
 		<>
 			<ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
 				<CssBaseline />
 				<AnimatePresence>
-					
-						<Router>
-							<NavTabs themeMode={themeMode} setThemeMode={setThemeMode} />
-							<RoutesWithAnimation />
-						</Router>
-					
+					<Router>
+						<NavTabs themeMode={themeMode} setThemeMode={setThemeMode} />
+						<RoutesWithAnimation />
+					</Router>
 				</AnimatePresence>
 			</ThemeProvider>
 		</>
@@ -112,7 +110,6 @@ const routeVariants = {
 	final: {
 		y: '0vh',
 		opacity: 1,
-		transition: {delay: 0.15}
+		transition: { delay: 0.15 },
 	},
-	
 };

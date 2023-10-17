@@ -43,7 +43,7 @@ export default function MobileNavigation(props) {
 				onClick={() => {
 					setIsDrawerOpen(true);
 				}}>
-				<MenuRoundedIcon style={{ fontSize: 40 }} />
+				<MenuRoundedIcon fontSize='large' color={'primary'} />
 			</IconButton>
 
 			<Drawer
@@ -54,7 +54,7 @@ export default function MobileNavigation(props) {
 					setIsDrawerOpen(false);
 				}}>
 				<Box
-					backgroundColor='primary'
+					backgroundColor='primary.background'
 					width={250}
 					height='100vh'
 					role='presentation'>
