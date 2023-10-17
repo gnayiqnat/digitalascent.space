@@ -1,5 +1,6 @@
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { AnimatePresence } from 'framer-motion';
 /* Fonts */
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -19,12 +20,8 @@ import Games from './pages/games/games';
 import Credits from './pages/credits/credits';
 import About from './pages/about/about';
 import NotFound from './pages/404/404';
-import logo from './assets/logo-large.png';
 import NavTabs from './components/navigation';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import Signup from './pages/sign-up/signup';
-import Login from './pages/log-in/login';
-import { motion, AnimatePresence } from 'framer-motion';
+import LoadingSplashScreen from './components/loading';
 
 const lightTheme = createTheme({
 	palette: {
@@ -47,7 +44,7 @@ const darkTheme = createTheme({
 
 		primary: {
 			main: '#ffffff',
-			background: '#121212', 
+			background: '#121212',
 			text: '#ffffff',
 		},
 		secondary: {
@@ -59,38 +56,26 @@ const darkTheme = createTheme({
 
 export default function App() {
 	const [themeMode, setThemeMode] = useState('light');
+	const [isLoading, setIsLoading] = useState(true);
 
 	return (
 		<>
 			<ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
 				<CssBaseline />
-				<Router>
-					<LocationProvider>
-						<NavTabs themeMode={themeMode} setThemeMode={setThemeMode} />
-						<RoutesWithAnimation />
-					</LocationProvider>
-				</Router>
+				<AnimatePresence>
+					
+						<Router>
+							<NavTabs themeMode={themeMode} setThemeMode={setThemeMode} />
+							<RoutesWithAnimation />
+						</Router>
+					
+				</AnimatePresence>
 			</ThemeProvider>
 		</>
 	);
 }
 
-function LocationProvider({ children }) {
-	return <AnimatePresence>{children}</AnimatePresence>;
-}
-
 function RoutesWithAnimation() {
-	const routeVariants = {
-		initial: {
-			y: '5vh',
-			opacity: 0,
-		},
-		final: {
-			y: '0vh',
-			opacity: 1,
-			transition: { delay: 0.15 },
-		},
-	};
 	const location = useLocation();
 
 	return (
@@ -115,9 +100,17 @@ function RoutesWithAnimation() {
 				path='/about'
 				element={<About routeVariants={routeVariants} />}
 			/>
-			<Route exact path='/signup' element={<Signup />} />
-			<Route exact path='/login' element={<Login />} />
-			<Route exact path='*' element={<NotFound />} />
 		</Routes>
 	);
 }
+
+const routeVariants = {
+	initial: {
+		y: '5vh',
+		opacity: 0.5,
+	},
+	final: {
+		y: '0vh',
+		opacity: 1,
+	}
+};
