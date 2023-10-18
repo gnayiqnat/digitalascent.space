@@ -35,13 +35,12 @@ import {
 import { useState, useEffect } from 'react';
 
 export default function MobileNavigation(props) {
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
 	return (
 		<>
 			<IconButton
 				onClick={() => {
-					setIsDrawerOpen(true);
+					props.setIsDrawerOpen(true);
 				}}>
 				<MenuRoundedIcon fontSize='large' color={'primary'} />
 			</IconButton>
@@ -49,9 +48,9 @@ export default function MobileNavigation(props) {
 			<Drawer
 				anchor='right'
 				marginLeft={-10}
-				open={isDrawerOpen}
+				open={props.isDrawerOpen}
 				onClose={() => {
-					setIsDrawerOpen(false);
+					props.setIsDrawerOpen(false);
 				}}>
 				<Box
 					backgroundColor='primary.background'
@@ -79,7 +78,7 @@ export default function MobileNavigation(props) {
 							component={RouterLink}
 							to={'/'}
 							onClick={() => {
-								setIsDrawerOpen(false);
+								props.setIsDrawerOpen(false);
 							}}>
 							Home
 						</Button>
@@ -92,7 +91,7 @@ export default function MobileNavigation(props) {
 							component={RouterLink}
 							to={'/games'}
 							onClick={() => {
-								setIsDrawerOpen(false);
+								props.setIsDrawerOpen(false);
 							}}>
 							Games
 						</Button>
@@ -105,7 +104,7 @@ export default function MobileNavigation(props) {
 							component={RouterLink}
 							to={'/credits'}
 							onClick={() => {
-								setIsDrawerOpen(false);
+								props.setIsDrawerOpen(false);
 							}}>
 							Credits
 						</Button>
@@ -118,7 +117,7 @@ export default function MobileNavigation(props) {
 							component={RouterLink}
 							to={'/about'}
 							onClick={() => {
-								setIsDrawerOpen(false);
+								props.setIsDrawerOpen(false);
 							}}>
 							About
 						</Button>

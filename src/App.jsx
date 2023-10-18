@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
+
 /* Fonts */
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -21,6 +22,7 @@ import Credits from './pages/credits/credits';
 import About from './pages/about/about';
 import NotFound from './pages/404/404';
 import NavTabs from './components/navigation';
+import LoadingSplashScreen from './components/loading';
 
 const lightTheme = createTheme({
 	palette: {
@@ -43,6 +45,7 @@ const darkTheme = createTheme({
 
 		primary: {
 			main: '#ffffff',
+			background: { default: '#000016' },
 			background: '#000016',
 			text: '#ffffff',
 		},
@@ -54,18 +57,38 @@ const darkTheme = createTheme({
 });
 
 export default function App() {
+	const [fontHasLoaded, setFontHasLoaded] = useState(false);
 	const [themeMode, setThemeMode] = useState('light');
+
+	const scaleDown = useAnimationControls();
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+	useEffect(() => {
+		if (isDrawerOpen) {
+			scaleDown.start({
+				scale: 0.85,
+				transition: { delay: 0.05 },
+			});
+		} else if (!isDrawerOpen) {
+			scaleDown.start({ scale: 1, transition: { delay: 0.05 } });
+		}
+	});
 
 	return (
 		<>
 			<ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
 				<CssBaseline />
-				<AnimatePresence>
-					<Router>
-						<NavTabs themeMode={themeMode} setThemeMode={setThemeMode} />
-						<RoutesWithAnimation />
-					</Router>
-				</AnimatePresence>
+				<Router>
+					<motion.div animate={scaleDown}>
+						<NavTabs
+							isDrawerOpen={isDrawerOpen}
+							setIsDrawerOpen={setIsDrawerOpen}
+							themeMode={themeMode}
+							setThemeMode={setThemeMode}
+						/>
+						<RoutesWithAnimation animate={scaleDown} />
+					</motion.div>
+				</Router>
 			</ThemeProvider>
 		</>
 	);

@@ -109,7 +109,7 @@ export default function NavTabs(props) {
 								themeMode={props.themeMode}
 								setThemeMode={props.setThemeMode}
 							/>
-							<MobileNavigation
+							<MobileNavigation isDrawerOpen={props.isDrawerOpen} setIsDrawerOpen={props.setIsDrawerOpen}
 								themeMode={props.themeMode}
 								setThemeMode={props.setThemeMode}
 							/>
