@@ -35,7 +35,6 @@ import {
 import { useState, useEffect } from 'react';
 
 export default function MobileNavigation(props) {
-
 	return (
 		<>
 			<IconButton
@@ -47,24 +46,22 @@ export default function MobileNavigation(props) {
 
 			<Drawer
 				anchor='right'
-				marginLeft={-10}
 				open={props.isDrawerOpen}
 				onClose={() => {
 					props.setIsDrawerOpen(false);
 				}}>
 				<Box
-					backgroundColor='primary.background'
 					width={250}
+					backgroundColor='primary.background.default'
 					height='100vh'
 					role='presentation'>
 					<Box
 						display='flex'
-						marginLeft={-19}
-						justifyContent={'center'}
-						alignItems='center'>
+						justifyContent='start'
+						alignItems='center'
+						padding={1.5}>
 						<img
 							src={props.themeMode === 'dark' ? logo : logo_dark}
-							style={{ marginLeft: 5, marginTop: 10 }}
 							width={65}
 						/>
 					</Box>
