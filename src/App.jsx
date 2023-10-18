@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { motion, useAnimationControls } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
 
 /* Fonts */
 import '@fontsource/roboto/300.css';
@@ -55,18 +56,22 @@ const darkTheme = createTheme({
 
 export default function App() {
 	const [themeMode, setThemeMode] = useState('light');
-
-	const scaleDown = useAnimationControls();
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+	const scaleDown = useAnimationControls();
+
 	useEffect(() => {
-		if (isDrawerOpen) {
+		if (isDrawerOpen && isMobile) {
 			scaleDown.start({
 				scale: 0.85,
 				transition: { delay: 0.05 },
 			});
 		} else if (!isDrawerOpen) {
 			scaleDown.start({ scale: 1, transition: { delay: 0.05 } });
+		} else {
+			setIsDrawerOpen(false)
+			scaleDown.start({scale: 1})
 		}
 	});
 
