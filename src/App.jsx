@@ -13,16 +13,14 @@ import {
 	BrowserRouter as Router,
 	Routes,
 	useLocation,
-	redirect,
 } from 'react-router-dom';
 
+/* Pages */
 import Homepage from './pages/homepage/homepage';
 import Games from './pages/games/games';
 import Credits from './pages/credits/credits';
 import About from './pages/about/about';
-import NotFound from './pages/404/404';
 import NavTabs from './components/navigation';
-import LoadingSplashScreen from './components/loading';
 
 const lightTheme = createTheme({
 	palette: {
@@ -56,7 +54,6 @@ const darkTheme = createTheme({
 });
 
 export default function App() {
-	const [fontHasLoaded, setFontHasLoaded] = useState(false);
 	const [themeMode, setThemeMode] = useState('light');
 
 	const scaleDown = useAnimationControls();
