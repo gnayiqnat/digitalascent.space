@@ -109,7 +109,7 @@ export default function NavTabs(props) {
 						</Button>
 						<Box sx={{ display: 'flex', alignItems: 'center' }}>
 							<Box display='flex' flexDirection='row'>
-								<NotificationSystem mobile={true} />
+								
 								<ThemeSwitcher
 									themeMode={props.themeMode}
 									setThemeMode={props.setThemeMode}
