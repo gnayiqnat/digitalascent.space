@@ -17,11 +17,12 @@ import {
 } from 'react-router-dom';
 
 /* Pages */
-import Homepage from './pages/homepage/homepage';
-import Games from './pages/games/games';
-import Credits from './pages/credits/credits';
-import About from './pages/about/about';
-import NavTabs from './components/navigation';
+import Homepage from './src/pages/homepage/homepage';
+import Games from './src/pages/games/games';
+import Credits from './src/pages/credits/credits';
+import About from './src/pages/about/about';
+import NavTabs from './src/components/navigation';
+import Notifications from './src/pages/notifications/notifications';
 
 const lightTheme = createTheme({
 	palette: {
@@ -50,6 +51,7 @@ const darkTheme = createTheme({
 		secondary: {
 			main: '#ffffff',
 			text: '#757575',
+			text2: '#dcdcdc',
 		},
 	},
 });
@@ -70,8 +72,8 @@ export default function App() {
 		} else if (!isDrawerOpen) {
 			scaleDown.start({ scale: 1, transition: { delay: 0.05 } });
 		} else {
-			setIsDrawerOpen(false)
-			scaleDown.start({scale: 1})
+			setIsDrawerOpen(false);
+			scaleDown.start({ scale: 1 });
 		}
 	});
 
@@ -119,6 +121,11 @@ function RoutesWithAnimation() {
 				exact
 				path='/about'
 				element={<About routeVariants={routeVariants} />}
+			/>
+			<Route
+				exact
+				path='/notifications'
+				element={<Notifications routeVariants={routeVariants} />}
 			/>
 		</Routes>
 	);

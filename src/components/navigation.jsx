@@ -1,4 +1,4 @@
-import * as React from 'react';
+import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import {
@@ -28,15 +28,17 @@ import {
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-
-import { motion } from 'framer-motion';
+import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
+import { motion, useAnimation, useAnimationControls } from 'framer-motion';
 import {
+	Link,
 	BrowserRouter as Router,
 	Link as RouterLink,
 	Routes,
 	useLocation,
+	useNavigate,
 } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import MobileNavigation from './navigation-mobile';
 import logo from '../assets/logo-large.png';
 import logo_dark from '../assets/logo-large-black.png';
@@ -47,6 +49,7 @@ export default function NavTabs(props) {
 	const [isNotInTabs, setIsNotInTabs] = useState();
 	const handleChange = (_e, newValue) => {
 		setValue(newValue);
+		console.log(_e, newValue);
 	};
 
 	const windowURL = useLocation().pathname;
@@ -105,11 +108,16 @@ export default function NavTabs(props) {
 							/>
 						</Button>
 						<Box sx={{ display: 'flex', alignItems: 'center' }}>
-							<ThemeSwitcher
-								themeMode={props.themeMode}
-								setThemeMode={props.setThemeMode}
-							/>
-							<MobileNavigation isDrawerOpen={props.isDrawerOpen} setIsDrawerOpen={props.setIsDrawerOpen}
+							<Box display='flex' flexDirection='row'>
+								<NotificationSystem mobile={true} />
+								<ThemeSwitcher
+									themeMode={props.themeMode}
+									setThemeMode={props.setThemeMode}
+								/>
+							</Box>
+							<MobileNavigation
+								isDrawerOpen={props.isDrawerOpen}
+								setIsDrawerOpen={props.setIsDrawerOpen}
 								themeMode={props.themeMode}
 								setThemeMode={props.setThemeMode}
 							/>
@@ -174,10 +182,13 @@ export default function NavTabs(props) {
 								sx={{ color: 'secondary.text' }}
 							/>
 						</Tabs>
-						<ThemeSwitcher
-							themeMode={props.themeMode}
-							setThemeMode={props.setThemeMode}
-						/>
+						<Box display='flex' flexDirection='row'>
+							<NotificationSystem themeMode={props.themeMode} mobile={false} />
+							<ThemeSwitcher
+								themeMode={props.themeMode}
+								setThemeMode={props.setThemeMode}
+							/>
+						</Box>
 					</>
 				)}
 			</Toolbar>
@@ -186,14 +197,10 @@ export default function NavTabs(props) {
 }
 
 function ThemeSwitcher(props) {
-	const toggleSwitch = () => {
-		props.setThemeMode(props.themeMode === 'light' ? 'dark' : 'light');
-	};
-
 	return (
 		<div
 			onClick={() => {
-				toggleSwitch();
+				props.setThemeMode(props.themeMode === 'light' ? 'dark' : 'light');
 			}}>
 			<IconButton>
 				{props.themeMode === 'light' ? (
@@ -202,6 +209,131 @@ function ThemeSwitcher(props) {
 					<DarkModeIcon color='primary' />
 				)}
 			</IconButton>
+		</div>
+	);
+}
+
+function NotificationSystem(props) {
+	const notifAnimation = useAnimationControls();
+	const componentRef = useRef(null);
+	const [notificationOpen, setNotificationOpen] = useState(true);
+
+	useEffect(() => {
+		function handleClickOutside(event) {
+			if (
+				componentRef.current &&
+				!componentRef.current.contains(event.target)
+			) {
+				setNotificationOpen(true);
+				notifAnimation.start({ opacity: 0, scale: 0.5});
+			}
+		}
+		document.addEventListener('click', handleClickOutside);
+
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
+	}, []);
+
+	function handleNotifClick() {
+		setNotificationOpen(!notificationOpen);
+
+		if (notificationOpen === true) {
+			notifAnimation.start({ opacity: 1, scale: 1 });
+		} else {
+			notifAnimation.start({ opacity: 0, scale: 0.5});
+		}
+	}
+
+	const navigate = useNavigate();
+	return (
+		<div ref={componentRef}>
+			<IconButton onClick={() => handleNotifClick()}>
+				<NotificationsNoneRoundedIcon color='primary' />
+			</IconButton>
+			<Card
+				variant='outlined'
+				component={motion.div}
+				initial={{ opacity: 0, scale: 0.5 }}
+				animate={notifAnimation}
+				style={{
+					borderRadius: 10,
+					minWidth: 450,
+					borderColor: '#333333',
+					backgroundColor: 'primary.background',
+					minHeight: 350,
+					position: 'absolute',
+					right: 50,
+				}}>
+				<Grid>
+					<Grid
+						padding={2}
+						paddingTop={1.5}
+						paddingBottom={0}
+						container
+						flexDirection='row'
+						justifyContent='space-between'
+						alignItems='center'
+						marginBottom={4}>
+						<Typography variant='h5' fontWeight='700'>
+							Notifications
+						</Typography>
+						<IconButton
+							component={Link}
+							to={'/notifications'}
+							onClick={handleNotifClick}>
+							<LaunchRoundedIcon color='primary' />
+						</IconButton>
+					</Grid>
+
+					<Grid
+						component={motion.div}
+						whileHover={{ x: 10 }}
+						onClick={() => {navigate('/notifications'), handleNotifClick()}}
+						container
+						flexDirection='column'
+						minHeight='100%'
+						minWidth='100%'
+						padding='8px 15.5px'
+						sx={{ cursor: 'pointer' }}>
+						<Grid>
+							<Grid
+								container
+								sx={{
+									color: 'secondary.text2',
+									flexDirection: 'row',
+									justifyContent: 'space-between',
+									alignItems: 'start',
+								}}>
+								<Box>
+									<Grid container flexDirection='row'>
+										<img
+											width={25}
+											src={props.themeMode === 'dark' ? logo : logo_dark}
+											opacity={0.3}
+										/>
+										<Typography
+											textDecoration='none'
+											fontWeight={300}
+											marginLeft={1}>
+											Digital Ascent
+										</Typography>
+									</Grid>
+								</Box>
+								<Typography fontWeight={300}>18 Oct</Typography>
+							</Grid>
+						</Grid>
+						<Typography
+							color='primary'
+							fontWeight={400}
+							marginLeft={0.5}
+							marginTop={0.7}
+							fontSize={18}>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						</Typography>
+					</Grid>
+				</Grid>
+			</Card>
 		</div>
 	);
 }
