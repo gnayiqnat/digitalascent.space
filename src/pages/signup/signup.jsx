@@ -12,21 +12,54 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
-
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const data = new FormData(event.currentTarget);
+		console.log({
+			email: data.get('email'),
+			password: data.get('password'),
+		});
+	};
 
-  return (
-      <Container component="main" maxWidth="xs">
+	return (
+		<Box marginTop={5}>
+			<Sec1 handleSubmit={handleSubmit} />
+		</Box>
+	);
+}
+
+function Sec1(props) {
+	return (
+		<>
+			<Container component='main' maxWidth='md' sx={{marginTop: '30vh'}}>
+				<Box
+					component='form'
+					noValidate
+					onSubmit={props.handleSubmit}
+					sx={{ mt: 3 }}
+				>
+					<Grid container spacing={2}>
+						<Grid item xs={12}>
+							<TextField
+								required
+								fullWidth
+								id='email'
+								label='Email Address'
+								name='email'
+								autoComplete='email'
+							></TextField>
+						</Grid>
+					</Grid>
+				</Box>
+			</Container>
+		</>
+	);
+}
+
+{
+	/*
+     <Container component="main" maxWidth="xs">
         <Box
           sx={{
             marginTop: 1,
@@ -109,6 +142,5 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-      </Container>
-  );
+      </Container> */
 }

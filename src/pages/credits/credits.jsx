@@ -29,7 +29,7 @@ export default function Credits(props) {
 			variants={props.routeVariants}
 			initial='initial'
 			animate='final'>
-			<CreditsSec1 />
+			<CreditsSec1 sx={{marginTop:14}} />
 		</motion.div>
 	);
 }
@@ -37,7 +37,7 @@ export default function Credits(props) {
 function CreditsSec1() {
 	return (
 		<>
-			<Typography fontFamily='Monoton' variant='h3' align='center'>
+			<Typography fontFamily='Monoton' variant='h3' align='center' sx={{marginTop:14}} >
 				CREDITS
 			</Typography>
 		</>

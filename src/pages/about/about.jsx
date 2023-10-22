@@ -29,7 +29,8 @@ export default function About(props) {
 		<motion.div
 			variants={props.routeVariants}
 			initial='initial'
-			animate='final'>
+			animate='final'
+		>
 			<AboutSec1 />
 		</motion.div>
 	);
@@ -43,8 +44,16 @@ function AboutSec1() {
 					display: 'flex',
 					justifyContent: 'center',
 					flexDirection: 'column',
-				}}>
-				<Typography gutterBottom variant='h3' align='center' fontFamily='Monoton'>
+				}}
+			>
+				
+				<Typography
+					gutterBottom
+					variant='h3'
+					align='center'
+					fontFamily='Monoton'
+					sx={{ marginTop: 14 }}
+				>
 					ABOUT
 				</Typography>
 			</Container>

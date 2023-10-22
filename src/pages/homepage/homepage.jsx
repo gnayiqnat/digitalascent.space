@@ -60,7 +60,7 @@ const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 		<Container
 			component='main'
 			maxWidth='sm'
-			sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', userSelect:'none' }}>
+			sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', userSelect:'none', marginTop:14, }}>
 			<Box>
 				{isMobile ? (
 					<>
@@ -114,7 +114,6 @@ const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 					</motion.div>
 				)}
 			</Box>
-
 		</Container>
 	);
 }

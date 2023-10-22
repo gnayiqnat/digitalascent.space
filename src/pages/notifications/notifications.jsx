@@ -7,8 +7,14 @@ export default function Notifications(props) {
 			<motion.div
 				variants={props.routeVariants}
 				initial='initial'
-				animate='final'>
-				<Typography fontFamily='Monoton' variant='h3' align='center'>
+				animate='final'
+			>
+				<Typography
+					fontFamily='Monoton'
+					variant='h3'
+					align='center'
+					sx={{ marginTop: 14 }}
+				>
 					NOTIFICATIONS
 				</Typography>
 			</motion.div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme, ThemeProvider, CssBaseline} from '@mui/material';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 
@@ -21,10 +21,10 @@ import Homepage from './src/pages/homepage/homepage';
 import Games from './src/pages/games/games';
 import Credits from './src/pages/credits/credits';
 import About from './src/pages/about/about';
-import NavTabs from './src/components/navigation';
 import Notifications from './src/pages/notifications/notifications';
 import Login from './src/pages/login/login';
 import SignUp from './src/pages/signup/signup';
+import NavTabs from './src/components/navigation/navigation';
 
 const lightTheme = createTheme({
 	palette: {
@@ -59,10 +59,11 @@ const darkTheme = createTheme({
 });
 
 export default function App() {
-	const [themeMode, setThemeMode] = useState('light');
+	const [themeMode, setThemeMode] = useState('dark');
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
 	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
 	const scaleDown = useAnimationControls();
 
 	useEffect(() => {
@@ -133,11 +134,12 @@ function RoutesWithAnimation() {
 				exact
 				path='/login'
 				element={<Login routeVariants={routeVariants} />}
-			/><Route
-			exact
-			path='/signup'
-			element={<SignUp routeVariants={routeVariants} />}
-		/>
+			/>
+			<Route
+				exact
+				path='/signup'
+				element={<SignUp routeVariants={routeVariants} />}
+			/>
 		</Routes>
 	);
 }

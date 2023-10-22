@@ -1,4 +1,10 @@
 :root {
+    padding: 20px;
     overflow-x: hidden;
-    padding-top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        padding: 10px;
+    }
 }
