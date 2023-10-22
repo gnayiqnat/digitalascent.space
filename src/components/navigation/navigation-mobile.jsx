@@ -51,7 +51,7 @@ export default function MobileNavigation(props) {
 									fontWeight: 300,
 								}}
 								component={RouterLink}
-								to={`/${e.url}`}
+								to={e.url}
 								onClick={() => {
 									props.setIsDrawerOpen(false);
 								}}
