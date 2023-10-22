@@ -3,8 +3,12 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Link as RouterLink } from 'react-router-dom';
 import Logo from '../logo';
 
-const routes = ['home', 'games', 'credits', 'about'];
-
+const routes = [
+	{ name: 'Home', url: '/' },
+	{ name: 'Games', url: '/games' },
+	{ name: 'Credits', url: '/credits' },
+	{ name: 'About', url: '/about' },
+];
 export default function MobileNavigation(props) {
 	return (
 		<>
@@ -35,7 +39,7 @@ export default function MobileNavigation(props) {
 						alignItems='center'
 						padding={1.5}
 					>
-						<Logo themeMode={props.themeMode} />
+						<Logo themeMode={props.themeMode} setIsDrawerOpen={props.setIsDrawerOpen} />
 					</Box>
 					<Grid container flexDirection='column' marginTop={'10vh'}>
 						{routes.map((e) => (
@@ -47,12 +51,12 @@ export default function MobileNavigation(props) {
 									fontWeight: 300,
 								}}
 								component={RouterLink}
-								to={`/${e}`}
+								to={`/${e.url}`}
 								onClick={() => {
 									props.setIsDrawerOpen(false);
 								}}
 							>
-								{e}
+								{e.name}
 							</Button>
 						))}
 					</Grid>

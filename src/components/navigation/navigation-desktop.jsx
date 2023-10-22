@@ -14,7 +14,6 @@ import { motion, useAnimation, useAnimationControls } from 'framer-motion';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 import { useState, useEffect, useRef } from 'react';
-import { NoEncryption } from '@mui/icons-material';
 
 export default function NavDesktop() {
 	const [value, setValue] = useState(0);
@@ -30,10 +29,12 @@ export default function NavDesktop() {
 
 	return (
 		<Box sx={{ marginLeft: -8 }}>
-			<Grid container spacing={4} >
+			<Grid container spacing={4}>
 				{routes.map((e) => (
 					<Grid item>
 						<Typography
+						component={RouterLink}
+							to={e.url}
 							key={e}
 							sx={{
 								color: e.url == windowURL ? 'primary.text' : 'secondary.text',
@@ -42,8 +43,7 @@ export default function NavDesktop() {
 								fontSize: 18,
 								textDecoration: 'none',
 							}}
-							component={RouterLink}
-							to={e.url}
+							
 						>
 							{e.name}
 						</Typography>

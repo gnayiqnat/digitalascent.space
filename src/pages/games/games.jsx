@@ -31,7 +31,8 @@ export default function Games(props) {
 			<motion.div
 				variants={props.routeVariants}
 				initial='initial'
-				animate='final'>
+				animate='final'
+			>
 				<GamesSec1 />
 			</motion.div>
 		</>
@@ -41,7 +42,12 @@ export default function Games(props) {
 function GamesSec1() {
 	return (
 		<>
-			<Typography fontFamily='Monoton' variant='h3' align='center'>
+			<Typography
+				fontFamily='Monoton'
+				variant='h3'
+				align='center'
+				sx={{ marginTop: 14 }}
+			>
 				GAMES
 			</Typography>
 		</>
