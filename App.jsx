@@ -23,6 +23,8 @@ import Credits from './src/pages/credits/credits';
 import About from './src/pages/about/about';
 import NavTabs from './src/components/navigation';
 import Notifications from './src/pages/notifications/notifications';
+import Login from './src/pages/login/login';
+import SignUp from './src/pages/signup/signup';
 
 const lightTheme = createTheme({
 	palette: {
@@ -127,6 +129,15 @@ function RoutesWithAnimation() {
 				path='/notifications'
 				element={<Notifications routeVariants={routeVariants} />}
 			/>
+			<Route
+				exact
+				path='/login'
+				element={<Login routeVariants={routeVariants} />}
+			/><Route
+			exact
+			path='/signup'
+			element={<SignUp routeVariants={routeVariants} />}
+		/>
 		</Routes>
 	);
 }
