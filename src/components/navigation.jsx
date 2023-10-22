@@ -85,10 +85,10 @@ export default function NavTabs(props) {
 		<AppBar
 			sx={{
 				backgroundColor: 'primary.background',
-				marginBottom: 15,
 				position: 'relative',
 			}}
-			elevation={0}>
+			elevation={0}
+		>
 			<Toolbar
 				style={{
 					display: 'flex',
@@ -97,7 +97,8 @@ export default function NavTabs(props) {
 					width: '100%',
 					height: '60px',
 					paddingLeft: 3,
-				}}>
+				}}
+			>
 				{isMobile ? (
 					<>
 						<Button disableRipple LinkComponent={RouterLink} to='/'>
@@ -109,7 +110,6 @@ export default function NavTabs(props) {
 						</Button>
 						<Box sx={{ display: 'flex', alignItems: 'center' }}>
 							<Box display='flex' flexDirection='row'>
-								
 								<ThemeSwitcher
 									themeMode={props.themeMode}
 									setThemeMode={props.setThemeMode}
@@ -148,7 +148,8 @@ export default function NavTabs(props) {
 									borderRadius: 10,
 									display: isNotInTabs === 1 ? 'none' : 'block',
 								},
-							}}>
+							}}
+						>
 							<Tab
 								disableRipple
 								label='Home'
@@ -188,9 +189,29 @@ export default function NavTabs(props) {
 								themeMode={props.themeMode}
 								setThemeMode={props.setThemeMode}
 							/>
+							{/*<Button
+							component={RouterLink}
+							to={'/signup'}
+								style={{
+									backgroundColor: 'primary.background.default',
+									color: 'primary.text',
+								}}
+							>
+								Sign up
+							</Button>
+							<Button
+							component={RouterLink}
+							to={'/login'}
+								style={{
+									backgroundColor: 'primary.text',
+									color: 'primary.background.default',
+								}}
+							>
+								Log in
+							</Button>*/}
 						</Box>
 					</>
-				)}
+				)}{' '}
 			</Toolbar>
 		</AppBar>
 	);
@@ -201,7 +222,8 @@ function ThemeSwitcher(props) {
 		<div
 			onClick={() => {
 				props.setThemeMode(props.themeMode === 'light' ? 'dark' : 'light');
-			}}>
+			}}
+		>
 			<IconButton>
 				{props.themeMode === 'light' ? (
 					<LightModeIcon color='primary' />
@@ -225,7 +247,7 @@ function NotificationSystem(props) {
 				!componentRef.current.contains(event.target)
 			) {
 				setNotificationOpen(true);
-				notifAnimation.start({ opacity: 0, scale: 0.5});
+				notifAnimation.start({ opacity: 0, x: 30 });
 			}
 		}
 		document.addEventListener('click', handleClickOutside);
@@ -239,9 +261,9 @@ function NotificationSystem(props) {
 		setNotificationOpen(!notificationOpen);
 
 		if (notificationOpen === true) {
-			notifAnimation.start({ opacity: 1, scale: 1 });
+			notifAnimation.start({ opacity: 1, x: 0 });
 		} else {
-			notifAnimation.start({ opacity: 0, scale: 0.5});
+			notifAnimation.start({ opacity: 0, x: 30 });
 		}
 	}
 
@@ -254,8 +276,9 @@ function NotificationSystem(props) {
 			<Card
 				variant='outlined'
 				component={motion.div}
-				initial={{ opacity: 0, scale: 0.5 }}
+				initial={{ opacity: 0, x: 30 }}
 				animate={notifAnimation}
+				transition={{ duration: 0.1 }}
 				style={{
 					borderRadius: 10,
 					minWidth: 450,
@@ -264,7 +287,8 @@ function NotificationSystem(props) {
 					minHeight: 350,
 					position: 'absolute',
 					right: 50,
-				}}>
+				}}
+			>
 				<Grid>
 					<Grid
 						padding={2}
@@ -274,14 +298,16 @@ function NotificationSystem(props) {
 						flexDirection='row'
 						justifyContent='space-between'
 						alignItems='center'
-						marginBottom={4}>
+						marginBottom={4}
+					>
 						<Typography variant='h5' fontWeight='700'>
 							Notifications
 						</Typography>
 						<IconButton
 							component={Link}
 							to={'/notifications'}
-							onClick={handleNotifClick}>
+							onClick={handleNotifClick}
+						>
 							<LaunchRoundedIcon color='primary' />
 						</IconButton>
 					</Grid>
@@ -289,13 +315,16 @@ function NotificationSystem(props) {
 					<Grid
 						component={motion.div}
 						whileHover={{ x: 10 }}
-						onClick={() => {navigate('/notifications'), handleNotifClick()}}
+						onClick={() => {
+							navigate('/notifications'), handleNotifClick();
+						}}
 						container
 						flexDirection='column'
 						minHeight='100%'
 						minWidth='100%'
 						padding='8px 15.5px'
-						sx={{ cursor: 'pointer' }}>
+						sx={{ cursor: 'pointer' }}
+					>
 						<Grid>
 							<Grid
 								container
@@ -304,7 +333,8 @@ function NotificationSystem(props) {
 									flexDirection: 'row',
 									justifyContent: 'space-between',
 									alignItems: 'start',
-								}}>
+								}}
+							>
 								<Box>
 									<Grid container flexDirection='row'>
 										<img
@@ -315,7 +345,8 @@ function NotificationSystem(props) {
 										<Typography
 											textDecoration='none'
 											fontWeight={300}
-											marginLeft={1}>
+											marginLeft={1}
+										>
 											Digital Ascent
 										</Typography>
 									</Grid>
@@ -328,7 +359,8 @@ function NotificationSystem(props) {
 							fontWeight={400}
 							marginLeft={0.5}
 							marginTop={0.7}
-							fontSize={18}>
+							fontSize={18}
+						>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						</Typography>
 					</Grid>
