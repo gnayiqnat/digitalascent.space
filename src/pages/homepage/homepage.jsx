@@ -82,7 +82,7 @@ const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 							fontSize={'clamp(30px, 15vw, 105px)'}
 							fontWeight={400}
 							cursor='pointer'
-							marginLeft={10}>
+							marginLeft={5}>
 							ASCENT
 						</Typography>
 					</>

@@ -26,6 +26,7 @@ import Login from './src/pages/login/login';
 import SignUp from './src/pages/signup/signup';
 import NavTabs from './src/components/navigation/navigation';
 
+/* Color theme */
 const lightTheme = createTheme({
 	palette: {
 		mode: 'light',
@@ -58,6 +59,8 @@ const darkTheme = createTheme({
 	},
 });
 
+
+/* App */
 export default function App() {
 	const [themeMode, setThemeMode] = useState('dark');
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);

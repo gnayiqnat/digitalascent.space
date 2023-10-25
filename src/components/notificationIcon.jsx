@@ -5,8 +5,14 @@ import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import Logo from './logo';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
+import { createClient } from '@supabase/supabase-js';
 
-export default function NotificationSystem(props) {
+const supabaseURL = 'https://jvgvyyjbukqegrisvrrd.supabase.co';
+const supabaseApiKey =
+	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2Z3Z5eWpidWtxZWdyaXN2cnJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTY1MTM2OTMsImV4cCI6MjAxMjA4OTY5M30.1Y22eOpbynuWC3CIy4z2ANovxRli7gQiMlV1AXt9BiA';
+const supabase = createClient(supabaseURL, supabaseApiKey);
+
+export default function NotificationIcon(props) {
 	const notifAnimation = useAnimationControls();
 	const componentRef = useRef(null);
 	const [notificationOpen, setNotificationOpen] = useState(true);
@@ -36,6 +42,16 @@ export default function NotificationSystem(props) {
 		} else {
 			notifAnimation.start({ opacity: 0, x: 30 });
 		}
+	}
+
+	const [notifications, setNotifications] = useState([]);
+	useEffect(() => {
+		getNotifications();
+	}, []);
+
+	async function getNotifications() {
+		const { data } = await supabase.from('notifications').select();
+		setNotifications(data);
 	}
 
 	const navigate = useNavigate();
@@ -79,58 +95,69 @@ export default function NotificationSystem(props) {
 							to={'/notifications'}
 							onClick={handleNotifClick}
 						>
-							<LaunchRoundedIcon color='primary' />
+							<LaunchRoundedIcon color='primary.text' />
 						</IconButton>
 					</Grid>
 
-					<Grid
-						component={motion.div}
-						whileHover={{ x: 10 }}
-						onClick={() => {
-							navigate('/notifications'), handleNotifClick();
-						}}
-						container
-						flexDirection='column'
-						minHeight='100%'
-						minWidth='100%'
-						padding='8px 15.5px'
-						sx={{ cursor: 'pointer' }}
-					>
-						<Grid>
+					{notifications.map((e) => (
+						<>
 							<Grid
-								container
-								sx={{
-									color: 'secondary.text2',
-									flexDirection: 'row',
-									justifyContent: 'space-between',
-									alignItems: 'start',
+								component={motion.div}
+								whileHover={{ x: 10 }}
+								onClick={() => {
+									navigate('/notifications'), handleNotifClick();
 								}}
+								container
+								flexDirection='column'
+								minHeight='100%'
+								minWidth='100%'
+								padding='8px 15.5px'
+								sx={{ cursor: 'pointer', posiion: 'relative' }}
 							>
-								<Box>
-									<Grid container flexDirection='row'>
-										<Logo isNotification={true} themeMode={props.themeMode} />
-										<Typography
-											textDecoration='none'
-											fontWeight={300}
-											marginLeft={1}
-										>
-											Digital Ascent
+								<Grid>
+									<Grid
+										container
+										sx={{
+											color: 'secondary.text2',
+											flexDirection: 'row',
+											justifyContent: 'space-between',
+											alignItems: 'start',
+										}}
+									>
+										<Box>
+											<Grid container flexDirection='row'>
+												<Logo
+													isNotification={true}
+													themeMode={props.themeMode}
+												/>
+												<Typography
+													textDecoration='none'
+													fontWeight={300}
+													marginLeft={1}
+													color='primary.text'
+													sx={{ opacity: 0.7 }}
+												>
+													{e.author}
+												</Typography>
+											</Grid>
+										</Box>
+										<Typography fontWeight={300} sx={{ opacity: 0.7 }}>
+											{e.date}
 										</Typography>
 									</Grid>
-								</Box>
-								<Typography fontWeight={300}>18 Oct</Typography>
+								</Grid>
+								<Typography
+									color='primary'
+									fontWeight={400}
+									marginLeft={0.5}
+									marginTop={0.7}
+									fontSize={18}
+								>
+									{e.content}
+								</Typography>
 							</Grid>
-						</Grid>
-						<Typography
-							color='primary'
-							fontWeight={400}
-							marginLeft={0.5}
-							marginTop={0.7}
-							fontSize={18}
-						>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						</Typography>
-					</Grid>
+						</>
+					))}
 				</Grid>
 			</Card>
 		</div>

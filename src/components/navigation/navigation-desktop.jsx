@@ -31,11 +31,11 @@ export default function NavDesktop() {
 		<Box sx={{ marginLeft: -8 }}>
 			<Grid container spacing={4}>
 				{routes.map((e) => (
-					<Grid item>
+					<Grid item >
 						<Typography
-						component={RouterLink}
-							to={e.url}
+							component={RouterLink}
 							key={e}
+							to={e.url}
 							sx={{
 								color: e.url == windowURL ? 'primary.text' : 'secondary.text',
 								fontFamily: 'Public Sans',
@@ -43,7 +43,6 @@ export default function NavDesktop() {
 								fontSize: 18,
 								textDecoration: 'none',
 							}}
-							
 						>
 							{e.name}
 						</Typography>
