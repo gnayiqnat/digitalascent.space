@@ -61,9 +61,8 @@ const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 			component='main'
 			maxWidth='sm'
 			sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', userSelect:'none', marginTop:14, }}>
-			<Box>
 				{isMobile ? (
-					<>
+					<Box>
 						<Typography
 							component={motion.div}
 							animate={top}
@@ -85,9 +84,9 @@ const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 							marginLeft={5}>
 							ASCENT
 						</Typography>
-					</>
+					</Box>
 				) : (
-					<motion.div onHoverStart={handleHover} onHoverEnd={handleHover}>
+					<motion.div width={300} height={200} onHoverStart={handleHover} onHoverEnd={handleHover}>
 						<Typography
 							component={motion.div}
 							animate={top}
@@ -108,12 +107,11 @@ const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 							fontSize={'clamp(30px, 15vw, 105px)'}
 							fontWeight={400}
 							cursor='pointer'
-							marginLeft={10}>
+							marginLeft={13}>
 							ASCENT
 						</Typography>
 					</motion.div>
 				)}
-			</Box>
 		</Container>
 	);
 }

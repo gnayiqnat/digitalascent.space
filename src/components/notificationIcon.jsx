@@ -38,9 +38,9 @@ export default function NotificationIcon(props) {
 		setNotificationOpen(!notificationOpen);
 
 		if (notificationOpen === true) {
-			notifAnimation.start({ opacity: 1, x: 0 });
+			notifAnimation.start({ opacity: 1, x: 0, visibility: 'visible' });
 		} else {
-			notifAnimation.start({ opacity: 0, x: 30 });
+			notifAnimation.start({ opacity: 0, x: 30, visibility: 'hidden' });
 		}
 	}
 
@@ -63,7 +63,7 @@ export default function NotificationIcon(props) {
 			<Card
 				variant='outlined'
 				component={motion.div}
-				initial={{ opacity: 0, x: 30 }}
+				initial={{ opacity: 0, x: 30, visibility: 'hidden' }}
 				animate={notifAnimation}
 				transition={{ duration: 0.1 }}
 				style={{
