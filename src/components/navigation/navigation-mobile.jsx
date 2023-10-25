@@ -38,6 +38,7 @@ export default function MobileNavigation(props) {
 						justifyContent='start'
 						alignItems='center'
 						padding={1.5}
+						onClick={() => props.setIsDrawerOpen(false)}
 					>
 						<Logo themeMode={props.themeMode} setIsDrawerOpen={props.setIsDrawerOpen} />
 					</Box>
