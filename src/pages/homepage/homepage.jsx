@@ -24,96 +24,104 @@ import {
 } from '@mui/material';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useState } from 'react';
+import { render } from 'react-dom';
 import { useMediaQuery } from 'react-responsive';
-
 
 function Homepage(props) {
 	return (
 		<motion.div
 			variants={props.routeVariants}
 			initial='initial'
-			animate='final'>
+			animate='final'
+		>
 			<Section1 />
 		</motion.div>
 	);
 }
 
-
 function Section1() {
-	const [hasRun, setHasRun] = useState(false);
-	const top = useAnimationControls();
-	const bottom = useAnimationControls();
-const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-	function handleHover() {
-		if (hasRun === false) {
-			top.start({ x: -100 });
-			bottom.start({ x: 100 });
-			setHasRun(true);
-		} else {
-			top.start({ x: 0 });
-			bottom.start({ x: 0 });
-			setHasRun(false);
-		}
-	}
+	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
 	return (
-		<Container
-			component='main'
-			maxWidth='sm'
-			sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', userSelect:'none', marginTop:14, }}>
+		<>
+			<Container
+				component='main'
+				maxWidth='sm'
+				sx={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					marginTop: 14,
+				}}
+			>
 				{isMobile ? (
 					<Box>
-						<Typography
-							component={motion.div}
-							animate={top}
-							lineHeight={0.88}
-							fontFamily='Monoton'
-							variant='h1'
-							fontSize={'clamp(30px, 15vw, 105px)'}
-							fontWeight={400}
-							cursor='pointer'>
-							DIGITAL
-						</Typography>
-						<Typography
-							lineHeight={0.88}
-							fontFamily='Monoton'
-							variant='h1'
-							fontSize={'clamp(30px, 15vw, 105px)'}
-							fontWeight={400}
-							cursor='pointer'
-							marginLeft={5}>
-							ASCENT
-						</Typography>
+							<DigitalAscent />
 					</Box>
 				) : (
-					<motion.div width={300} height={200} onHoverStart={handleHover} onHoverEnd={handleHover}>
-						<Typography
-							component={motion.div}
-							animate={top}
-							lineHeight={0.88}
-							fontFamily='Monoton'
-							variant='h1'
-							fontSize={'clamp(30px, 15vw, 105px)'}
-							fontWeight={400}
-							cursor='pointer'>
-							DIGITAL
-						</Typography>
-						<Typography
-							component={motion.div}
-							animate={bottom}
-							lineHeight={0.88}
-							fontFamily='Monoton'
-							variant='h1'
-							fontSize={'clamp(30px, 15vw, 105px)'}
-							fontWeight={400}
-							cursor='pointer'
-							marginLeft={13}>
-							ASCENT
-						</Typography>
+					<motion.div
+						width={300}
+						height={200}
+					>
+						<DigitalAscent />
 					</motion.div>
 				)}
-		</Container>
+			</Container>
+		</>
 	);
 }
 
 export default Homepage;
+
+function DigitalAscent() {
+	const digitalAscent = ['DIGITAL', 'ASCENT'];
+
+	return (
+		<>
+			<Grid container flexDirection='column' overflow
+>
+				<Box>
+					<Grid container flexDirection='row'>
+						{Array.from(digitalAscent[0]).map((e) => (
+							<motion.div
+								drag
+							>
+								<Typography
+
+									lineHeight={0.88}
+									fontFamily='Monoton'
+									variant='h1'
+									fontSize={'clamp(30px, 15vw, 105px)'}
+									fontWeight={400}
+									cursor='pointer'
+								>
+									{e}
+								</Typography>
+							</motion.div>
+						))}
+					</Grid>
+				</Box>
+				<Box>
+					<Grid container flexDirection='row'>
+						{Array.from(digitalAscent[1]).map((e) => (
+							<motion.div
+								drag
+							>
+								<Typography
+									lineHeight={0.88}
+									fontFamily='Monoton'
+									variant='h1'
+									fontSize={'clamp(30px, 15vw, 105px)'}
+									fontWeight={400}
+									cursor='pointer'
+								>
+									{e}
+								</Typography>
+							</motion.div>
+						))}
+					</Grid>
+				</Box>
+			</Grid>
+		</>
+	);
+}

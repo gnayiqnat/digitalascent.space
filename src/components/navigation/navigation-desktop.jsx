@@ -16,7 +16,10 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 
 export default function NavDesktop() {
+	const [value, setValue] = useState(0);
+	const [isNotInTabs, setIsNotInTabs] = useState();
 	const windowURL = useLocation().pathname;
+
 	const routes = [
 		{ name: 'Home', url: '/' },
 		{ name: 'Games', url: '/games' },
@@ -28,7 +31,7 @@ export default function NavDesktop() {
 		<Box sx={{ marginLeft: -8 }}>
 			<Grid container spacing={4}>
 				{routes.map((e) => (
-					<Grid item sx={{ marginTop: e.url == windowURL ? 0.6 : 0,marginBottom: e.url == windowURL ? -0.6 : 0, transition: 'all ease 0.5s' }}>
+					<Grid item >
 						<Typography
 							component={RouterLink}
 							key={e}
@@ -37,9 +40,9 @@ export default function NavDesktop() {
 								color: e.url == windowURL ? 'primary.text' : 'secondary.text',
 								fontFamily: 'Public Sans',
 								fontWeight: 300,
-								fontSize: 20,
+								fontSize: 18,
 								textDecoration: 'none',
-								transition: 'all ease 0.5s',
+								transition: 'all ease 0.3s'
 							}}
 						>
 							{e.name}

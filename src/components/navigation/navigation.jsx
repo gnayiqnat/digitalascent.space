@@ -1,4 +1,4 @@
-import { Box, AppBar, Toolbar, Card } from '@mui/material';
+import { Box, AppBar, Toolbar } from '@mui/material';
 import MobileNavigation from './navigation-mobile';
 import { useMediaQuery } from 'react-responsive';
 import NotificationIcon from '../notificationIcon';
@@ -13,13 +13,11 @@ export default function NavTabs(props) {
 	return (
 		<AppBar
 			sx={{
-				backgroundColor: 'transparent',
+				backgroundColor: 'primary.background',
 				position: 'relative',
-				borderRadius: 7,
 			}}
 			elevation={0}
 		>
-			
 			<Toolbar
 				style={{
 					display: 'flex',

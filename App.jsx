@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { createTheme, ThemeProvider, CssBaseline} from '@mui/material';
+import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 
@@ -25,6 +25,7 @@ import Notifications from './src/pages/notifications/notifications';
 import Login from './src/pages/login/login';
 import SignUp from './src/pages/signup/signup';
 import NavTabs from './src/components/navigation/navigation';
+import Loading from './src/components/loading';
 
 /* Color theme */
 const lightTheme = createTheme({
@@ -59,12 +60,11 @@ const darkTheme = createTheme({
 	},
 });
 
-
 /* App */
 export default function App() {
 	const [themeMode, setThemeMode] = useState('dark');
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+	const [hasLoaded, setHasLoaded] = useState(false);
 	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
 	const scaleDown = useAnimationControls();
@@ -87,17 +87,21 @@ export default function App() {
 		<>
 			<ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
 				<CssBaseline />
-				<Router>
-					<motion.div animate={scaleDown}>
-						<NavTabs
-							isDrawerOpen={isDrawerOpen}
-							setIsDrawerOpen={setIsDrawerOpen}
-							themeMode={themeMode}
-							setThemeMode={setThemeMode}
-						/>
-						<RoutesWithAnimation animate={scaleDown} />
-					</motion.div>
-				</Router>
+				{hasLoaded ? (
+					<Router>
+						<motion.div animate={scaleDown}>
+							<NavTabs
+								isDrawerOpen={isDrawerOpen}
+								setIsDrawerOpen={setIsDrawerOpen}
+								themeMode={themeMode}
+								setThemeMode={setThemeMode}
+							/>
+							<RoutesWithAnimation animate={scaleDown} />
+						</motion.div>
+					</Router>
+				) : (
+					<Loading setHasLoaded={setHasLoaded} />
+				)}
 			</ThemeProvider>
 		</>
 	);
