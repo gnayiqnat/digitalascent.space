@@ -51,11 +51,7 @@ function GamesSec1() {
 			>
 				GAMES
 			</Typography>
-			<Grid container spacing={2}>
-				<Grid item xs={8} sx={{ backgroundColor: 'red'}}></Grid>
-				<Grid item xs={4} sx={{backgroundColor: 'blue'}}></Grid>
-				<Grid item></Grid>
-			</Grid>
+			
 		</>
 	);
 }
