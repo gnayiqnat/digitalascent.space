@@ -69,7 +69,7 @@ export default function NotificationIcon(props) {
 				style={{
 					borderRadius: 10,
 					minWidth: 450,
-					borderColor: '#333333',
+					borderColor: 'primary.text',
 					backgroundColor: 'primary.background',
 					minHeight: 350,
 					position: 'absolute',
