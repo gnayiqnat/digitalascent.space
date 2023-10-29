@@ -24,7 +24,7 @@ export default function NotificationIcon(props) {
 				!componentRef.current.contains(event.target)
 			) {
 				setNotificationOpen(true);
-				notifAnimation.start({ opacity: 0, x: 30 });
+				notifAnimation.start({ opacity: 0, x: 30, visibility: 'hidden' });
 			}
 		}
 		document.addEventListener('click', handleClickOutside);
@@ -66,10 +66,10 @@ export default function NotificationIcon(props) {
 				initial={{ opacity: 0, x: 30, visibility: 'hidden' }}
 				animate={notifAnimation}
 				transition={{ duration: 0.1 }}
-				style={{
-					borderRadius: 10,
+				sx={{
+					borderRadius: 3,
 					minWidth: 450,
-					borderColor: '#333333',
+					borderColor: 'primary.color',
 					backgroundColor: 'primary.background',
 					minHeight: 350,
 					position: 'absolute',
