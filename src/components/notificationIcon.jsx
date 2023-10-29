@@ -99,9 +99,10 @@ export default function NotificationIcon(props) {
 						</IconButton>
 					</Grid>
 
-					{notifications.map((e) => (
+					{notifications.map((e, i) => (
 						<>
 							<Grid
+							key={i}
 								component={motion.div}
 								whileHover={{ x: 10 }}
 								onClick={() => {
