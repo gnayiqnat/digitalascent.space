@@ -13,13 +13,13 @@ export default function Logo(props) {
 			style={{ marginLeft: 5, marginTop: 10 }}
 			width={25}
 		/> :
-			<Button disableRipple LinkComponent={RouterLink} to='/'>
+			<RouterLink to='/'>
 				<img
 					src={props.themeMode === 'dark' ? logo : logo_dark}
 					style={{ marginLeft: 5, marginTop: 10 }}
 					height={isMobile ? 60 : 80}
 				/>
-			</Button>}
+			</RouterLink>}
 		</>
 	);
 }
