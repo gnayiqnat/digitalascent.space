@@ -1,19 +1,10 @@
-import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import {
 	Box,
-	IconButton,
-	AppBar,
-	Toolbar,
 	Typography,
 	Grid,
 } from '@mui/material';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
-import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
-import { motion, useAnimation, useAnimationControls } from 'framer-motion';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-
-import { useState, useEffect, useRef } from 'react';
 
 export default function NavDesktop() {
 	const windowURL = useLocation().pathname;
