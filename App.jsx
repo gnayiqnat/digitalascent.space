@@ -25,7 +25,6 @@ import Notifications from './src/pages/notifications/notifications';
 import Login from './src/pages/login/login';
 import SignUp from './src/pages/signup/signup';
 import NavTabs from './src/components/navigation/navigation';
-import Loading from './src/components/loading';
 
 /* Color theme */
 const lightTheme = createTheme({
@@ -33,6 +32,7 @@ const lightTheme = createTheme({
 		mode: 'light',
 		primary: {
 			main: '#000000',
+			
 			text: '#000000',
 			background: '#ffffff',
 		},
@@ -49,10 +49,12 @@ const darkTheme = createTheme({
 
 		primary: {
 			main: '#ffffff',
+			color: '#00c6ac',
 			background: { default: '#000016' },
 			text: '#ffffff',
 		},
 		secondary: {
+			
 			main: '#ffffff',
 			text: '#757575',
 			text2: '#dcdcdc',
@@ -87,21 +89,17 @@ export default function App() {
 		<>
 			<ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
 				<CssBaseline />
-				{hasLoaded ? (
-					<Router>
-						<motion.div animate={scaleDown}>
-							<NavTabs
-								isDrawerOpen={isDrawerOpen}
-								setIsDrawerOpen={setIsDrawerOpen}
-								themeMode={themeMode}
-								setThemeMode={setThemeMode}
-							/>
-							<RoutesWithAnimation animate={scaleDown} />
-						</motion.div>
-					</Router>
-				) : (
-					<Loading setHasLoaded={setHasLoaded} />
-				)}
+				<Router>
+					<motion.div animate={scaleDown}>
+						<NavTabs
+							isDrawerOpen={isDrawerOpen}
+							setIsDrawerOpen={setIsDrawerOpen}
+							themeMode={themeMode}
+							setThemeMode={setThemeMode}
+						/>
+						<RoutesWithAnimation animate={scaleDown} />
+					</motion.div>
+				</Router>
 			</ThemeProvider>
 		</>
 	);
