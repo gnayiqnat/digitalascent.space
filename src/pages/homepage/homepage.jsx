@@ -25,6 +25,8 @@ import {
 import { motion, useAnimationControls } from 'framer-motion';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { Link } from 'react-router-dom';
 
 function Homepage(props) {
 	return (
@@ -70,7 +72,7 @@ function Section1() {
 			{isMobile ? (
 				<Box>
 					<Typography sx={headerStyle}>
-						DIGITAL <Box marginLeft={3}>ASCENT</Box>
+						DIGITAL <Box marginLeft={3} color='primary.color'>ASCENT</Box>
 					</Typography>
 				</Box>
 			) : (
@@ -88,6 +90,7 @@ function Section1() {
 						animate={bottom}
 						sx={headerStyle}
 						marginLeft={13}
+						color='primary.color'
 					>
 						ASCENT
 					</Typography>
