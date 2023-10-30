@@ -100,64 +100,59 @@ export default function NotificationIcon(props) {
 					</Grid>
 
 					{notifications.map((e, i) => (
-						<>
-							<Grid
+						<Grid
 							key={i}
-								component={motion.div}
-								whileHover={{ x: 10 }}
-								onClick={() => {
-									navigate('/notifications'), handleNotifClick();
-								}}
-								container
-								flexDirection='column'
-								minHeight='100%'
-								minWidth='100%'
-								padding='8px 15.5px'
-								sx={{ cursor: 'pointer', posiion: 'relative' }}
-							>
-								<Grid>
-									<Grid
-										container
-										sx={{
-											color: 'secondary.text2',
-											flexDirection: 'row',
-											justifyContent: 'space-between',
-											alignItems: 'start',
-										}}
-									>
-										<Box>
-											<Grid container flexDirection='row'>
-												<Logo
-													isNotification={true}
-													themeMode={props.themeMode}
-												/>
-												<Typography
-													textDecoration='none'
-													fontWeight={300}
-													marginLeft={1}
-													color='primary.text'
-													sx={{ opacity: 0.7 }}
-												>
-													{e.author}
-												</Typography>
-											</Grid>
-										</Box>
-										<Typography fontWeight={300} sx={{ opacity: 0.7 }}>
-											{e.date}
-										</Typography>
-									</Grid>
-								</Grid>
-								<Typography
-									color='primary'
-									fontWeight={400}
-									marginLeft={0.5}
-									marginTop={0.7}
-									fontSize={18}
+							component={motion.div}
+							whileHover={{ x: 10 }}
+							onClick={() => {
+								navigate('/notifications'), handleNotifClick();
+							}}
+							container
+							flexDirection='column'
+							minHeight='100%'
+							minWidth='100%'
+							padding='8px 15.5px'
+							sx={{ cursor: 'pointer', posiion: 'relative' }}
+						>
+							<Grid>
+								<Grid
+									container
+									sx={{
+										color: 'secondary.text2',
+										flexDirection: 'row',
+										justifyContent: 'space-between',
+										alignItems: 'start',
+									}}
 								>
-									{e.content}
-								</Typography>
+									<Box>
+										<Grid container flexDirection='row'>
+											<Logo isNotification={true} themeMode={props.themeMode} />
+											<Typography
+												textDecoration='none'
+												fontWeight={300}
+												marginLeft={1}
+												color='primary.text'
+												sx={{ opacity: 0.7 }}
+											>
+												{e.author}
+											</Typography>
+										</Grid>
+									</Box>
+									<Typography fontWeight={300} sx={{ opacity: 0.7 }}>
+										{e.date}
+									</Typography>
+								</Grid>
 							</Grid>
-						</>
+							<Typography
+								color='primary'
+								fontWeight={400}
+								marginLeft={0.5}
+								marginTop={0.7}
+								fontSize={18}
+							>
+								{e.content}
+							</Typography>
+						</Grid>
 					))}
 				</Grid>
 			</Card>

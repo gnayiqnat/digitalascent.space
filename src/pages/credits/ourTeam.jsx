@@ -133,7 +133,7 @@ function ProfileLinks(props) {
 	return (
 		<Grid container sx={{ flexDirection: 'row' }}>
 			{props.icons.map((e, i) => (
-				<Box key={e + i}>
+				<Box key={i}>
 					<IconButton sx={{ marginTop: 1.5, width: 40, height: 40 }}>
 						<Link to={props.links[i]} target='_blank'>
 							{e === 'homepage' && (

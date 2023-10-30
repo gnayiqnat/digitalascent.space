@@ -19,10 +19,9 @@ export default function NavDesktop() {
 		<Box sx={{ marginLeft: -8 }}>
 			<Grid container spacing={4}>
 				{routes.map((e, i) => (
-					<Grid item>
+					<Grid item key={i}>
 						<Typography
 							component={RouterLink}
-							key={i}
 							to={e.url}
 							sx={{
 								color: e.url == windowURL ? 'primary.text' : 'secondary.text',
