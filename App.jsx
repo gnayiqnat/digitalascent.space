@@ -65,25 +65,9 @@ const darkTheme = createTheme({
 /* App */
 export default function App() {
 	const [themeMode, setThemeMode] = useState('dark');
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-	const [hasLoaded, setHasLoaded] = useState(false);
-	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
 	const scaleDown = useAnimationControls();
 
-	useEffect(() => {
-		if (isDrawerOpen && isMobile) {
-			scaleDown.start({
-				scale: 0.85,
-				transition: { delay: 0.05 },
-			});
-		} else if (!isDrawerOpen) {
-			scaleDown.start({ scale: 1, transition: { delay: 0.05 } });
-		} else {
-			setIsDrawerOpen(false);
-			scaleDown.start({ scale: 1 });
-		}
-	});
 
 	return (
 		<>
@@ -92,12 +76,11 @@ export default function App() {
 				<Router>
 					<motion.div animate={scaleDown}>
 						<NavTabs
-							isDrawerOpen={isDrawerOpen}
-							setIsDrawerOpen={setIsDrawerOpen}
+							scaleDown={scaleDown}
 							themeMode={themeMode}
 							setThemeMode={setThemeMode}
 						/>
-						<RoutesWithAnimation animate={scaleDown} />
+						<RoutesWithAnimation />
 					</motion.div>
 				</Router>
 			</ThemeProvider>

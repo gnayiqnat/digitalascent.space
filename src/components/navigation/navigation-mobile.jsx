@@ -1,7 +1,10 @@
-import {Box, Button, IconButton, Drawer, Grid } from '@mui/material';
+import { Box, Button, IconButton, Drawer, Grid } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import Logo from '../logo';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const routes = [
 	{ name: 'Home', url: '/' },
@@ -10,11 +13,29 @@ const routes = [
 	{ name: 'About', url: '/about' },
 ];
 export default function MobileNavigation(props) {
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const isMobile = useMediaQuery({ query: '(max-width: 950px)' });
+	const windowURL = useLocation().pathname;
+
+	useEffect(() => {
+		if (isDrawerOpen && isMobile) {
+			props.scaleDown.start({
+				scale: 0.85,
+				transition: { delay: 0.05 },
+			});
+		} else if (!isDrawerOpen) {
+			props.scaleDown.start({ scale: 1, transition: { delay: 0.05 } });
+		} else {
+			setIsDrawerOpen(false);
+			props.scaleDown.start({ scale: 1 });
+		}
+	});
+
 	return (
 		<>
 			<IconButton
 				onClick={() => {
-					props.setIsDrawerOpen(true);
+					setIsDrawerOpen(true);
 				}}
 			>
 				<MenuRoundedIcon fontSize='large' color={'primary'} />
@@ -22,9 +43,9 @@ export default function MobileNavigation(props) {
 
 			<Drawer
 				anchor='right'
-				open={props.isDrawerOpen}
+				open={isDrawerOpen}
 				onClose={() => {
-					props.setIsDrawerOpen(false);
+					setIsDrawerOpen(false);
 				}}
 			>
 				<Box
@@ -38,23 +59,27 @@ export default function MobileNavigation(props) {
 						justifyContent='start'
 						alignItems='center'
 						padding={1.5}
-						onClick={() => props.setIsDrawerOpen(false)}
+						onClick={() => setIsDrawerOpen(false)}
 					>
-						<Logo themeMode={props.themeMode} setIsDrawerOpen={props.setIsDrawerOpen} />
+						<Logo
+							themeMode={props.themeMode}
+							setIsDrawerOpen={setIsDrawerOpen}
+						/>
 					</Box>
 					<Grid container flexDirection='column' marginTop={'10vh'}>
-						{routes.map((e) => (
+						{routes.map((e, i) => (
 							<Button
-								key={e}
-								style={{
+								key={i}
+								sx={{
 									height: 'clamp(60px, 10vh, 150px)',
 									fontSize: '1.5rem',
-									fontWeight: 300,
+									fontWeight: windowURL == e.url ? 400 : 300,
+									color: windowURL == e.url && 'primary.color',
 								}}
 								component={RouterLink}
 								to={e.url}
 								onClick={() => {
-									props.setIsDrawerOpen(false);
+									setIsDrawerOpen(false);
 								}}
 							>
 								{e.name}
