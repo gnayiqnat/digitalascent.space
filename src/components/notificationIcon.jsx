@@ -50,8 +50,13 @@ export default function NotificationIcon(props) {
 	}, []);
 
 	async function getNotifications() {
-		const { data } = await supabase.from('notifications').select();
-		setNotifications(data);
+		try {
+			const { data } = await supabase.from('notifications').select();
+			setNotifications(data);
+		} catch (err) {
+			console.log('Failed to fetch.');
+			console.log(`Error: ${err}`);
+		}
 	}
 
 	const navigate = useNavigate();
@@ -99,7 +104,7 @@ export default function NotificationIcon(props) {
 						</IconButton>
 					</Grid>
 
-					{notifications.map((e, i) => (
+					{notifications ? notifications.map((e, i) => (
 						<Grid
 							key={i}
 							component={motion.div}
@@ -153,7 +158,7 @@ export default function NotificationIcon(props) {
 								{e.content}
 							</Typography>
 						</Grid>
-					))}
+					)) : <Typography>Something went wrong</Typography>}
 				</Grid>
 			</Card>
 		</div>
