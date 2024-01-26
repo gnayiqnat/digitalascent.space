@@ -71,9 +71,10 @@ function Section1() {
 		>
 			{isMobile ? (
 				<Box>
-					<Typography sx={headerStyle}>
-						DIGITAL <Box marginLeft={3} color='primary.color'>ASCENT</Box>
-					</Typography>
+					<Typography sx={headerStyle}>DIGITAL</Typography>
+					<Box marginLeft={3} color='primary.color'>
+						<Typography sx={headerStyle}>ASCENT</Typography>
+					</Box>
 				</Box>
 			) : (
 				<motion.div
