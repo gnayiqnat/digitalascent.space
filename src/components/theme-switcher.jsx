@@ -6,7 +6,10 @@ export default function ThemeSwitcher(props) {
 	return (
 		<div
 			onClick={() => {
-					props.setThemeMode(props.themeMode === 'light' ? 'dark' : 'light');
+				props.setThemeMode(props.themeMode === 'light' ? 'dark' : 'light');
+				document.cookie = `themeMode=${
+					props.themeMode === 'light' ? 'dark' : 'light'
+				}; SameSite=Strict; Secure`;
 			}}
 		>
 			<IconButton>

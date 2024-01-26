@@ -25,6 +25,7 @@ import Notifications from './src/pages/notifications/notifications';
 import Login from './src/pages/login/login';
 import SignUp from './src/pages/signup/signup';
 import NavTabs from './src/components/navigation/navigation';
+import { SettingsEthernet } from '@mui/icons-material';
 
 /* Color theme */
 const lightTheme = createTheme({
@@ -53,7 +54,6 @@ const darkTheme = createTheme({
 			text: '#ffffff',
 		},
 		secondary: {
-			
 			main: '#ffffff',
 			text: '#757575',
 			text2: '#dcdcdc',
@@ -67,19 +67,37 @@ export default function App() {
 
 	const scaleDown = useAnimationControls();
 
+	useEffect(() => {
+		// themeMode will be null on every refresh
+
+		// Check if refresh has done, and if user has entered site before
+		if (document.cookie.includes('themeMode')) {
+			// If so, change the current theme mode to the previous one saved in the cookie
+			if (document.cookie.includes('light')) {
+				setThemeMode('light');
+			}
+		}
+		// confusing code, idc anymore as long as it works
+	}, []);
 
 	return (
 		<>
 			<ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
 				<CssBaseline />
 				<Router>
-					<motion.div animate={scaleDown}>
-						<NavTabs
-							scaleDown={scaleDown}
-							themeMode={themeMode}
-							setThemeMode={setThemeMode}
-						/>
-						<RoutesWithAnimation />
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ delay: 1, duration: 1 }}
+					>
+						<motion.div animate={scaleDown}>
+							<NavTabs
+								scaleDown={scaleDown}
+								themeMode={themeMode}
+								setThemeMode={setThemeMode}
+							/>
+							<RoutesWithAnimation />
+						</motion.div>
 					</motion.div>
 				</Router>
 			</ThemeProvider>
