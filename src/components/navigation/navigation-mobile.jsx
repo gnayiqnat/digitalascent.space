@@ -50,9 +50,9 @@ export default function MobileNavigation(props) {
 			>
 				<Box
 					width={250}
-					backgroundColor='primary.background.default'
 					height='100vh'
 					role='presentation'
+					sx={{ backgroundColor: props.themeMode === 'dark' ? '#1b1a20' : '#fffff' }}
 				>
 					<Box
 						display='flex'

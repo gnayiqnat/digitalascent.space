@@ -50,7 +50,6 @@ const darkTheme = createTheme({
 		primary: {
 			main: '#ffffff',
 			color: '#00c6ac',
-			background: { default: '#000016' },
 			text: '#ffffff',
 		},
 		secondary: {
@@ -58,8 +57,13 @@ const darkTheme = createTheme({
 			text: '#757575',
 			text2: '#dcdcdc',
 		},
+		background: {
+			default: '#1b1a20',
+			paper: '#1b1a20',
+		},
 	},
 });
+// #1b1a20
 
 /* App */
 export default function App() {
