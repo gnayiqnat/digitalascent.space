@@ -1,8 +1,8 @@
-import logo from '../assets/logo-light.png';
-import logo_dark from '../assets/logo-dark.png';
 import { Link as RouterLink } from 'react-router-dom';
-import { Button } from "@mui/material";
 import { useMediaQuery } from "react-responsive";
+
+const logo = './logo/logo-light.png';
+const logo_dark = './logo/logo-dark.png';
 
 export default function Logo(props) {
 	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
