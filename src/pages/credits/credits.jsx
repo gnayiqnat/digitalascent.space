@@ -23,8 +23,43 @@ import {
 	Avatar,
 	Container,
 } from '@mui/material';
-import { motion } from 'framer-motion';
-import OurTeam from './ourTeam';
+import { MotionConfig, motion } from 'framer-motion';
+
+const team = [
+	{
+		avatar: './pfp/ipomom.png',
+		username: 'Ipomom',
+		roles: '3D Designer',
+		links: 'https://wonk6820.artstation.com/projects',
+	},
+	{
+		avatar: './pfp/delta.png',
+		username: 'Delta',
+		roles: 'VFX Designer',
+	},
+
+	{
+		avatar: 'https://avatars.githubusercontent.com/u/133224159?v=4',
+		username: 'gnayiqnat',
+		roles: 'Digital Marketer',
+		links: 'https://gnayiqnat.vercel.app',
+	},
+	{
+		avatar: './pfp/ben.jpg',
+		username: 'benjamintjm',
+		roles: 'Game tester',
+		links: 'https://github.com/benjamintjm',
+	},
+	{
+		username: 'lonelyalive',
+		roles: 'Sound Designer',
+	},
+	{
+		avatar: './pfp/luke.png',
+		username: 'luke',
+		roles: 'GUI Designer',
+	},
+];
 
 export default function Credits(props) {
 	return (
@@ -33,30 +68,74 @@ export default function Credits(props) {
 			initial='initial'
 			animate='final'
 		>
-			<Box sx={{ marginTop: 4 }}>
-				<section>
-					<Typography
-						variant='h2'
-						align='center'
-						fontFamily='Monoton'
-						gutterBottom
-					>
-						OUR{' '}
-						<Box
-							sx={{
-								color: 'primary.color',
-								display: 'inline-block',
-								marginLeft: 1,
-							}}
-						>
-							TEAM
-						</Box>
-					</Typography>
-					<Grid container sx={{ flexDirection: 'row'}}>
-						<OurTeam />
-					</Grid>
-				</section>
-			</Box>
+			<section>
+				<Grid
+					container
+					sx={{
+						width: '90vw',
+						gap: 10,
+						justifyContent: 'center',
+
+						marginTop: '60px',
+					}}
+				>
+					{team.map((e, i) => (
+						<>
+							<Grid item key={i}>
+								<a
+									target='_blank'
+									href={e.links}
+									style={{ textDecoration: 'none' }}
+								>
+									<motion.div
+										initial={{ opacity: 1 }}
+										whileHover={{ opacity: e.links ? 0.5 : 1 }}
+									>
+										<Grid
+											container
+											sx={{
+												flexDirection: 'column',
+												alignItems: 'center',
+												padding: '0px 10px',
+											}}
+										>
+											<Avatar
+												src={e.avatar}
+												sx={{
+													width: 100,
+													height: 100,
+													marginBottom: 2,
+												}}
+											/>
+											<Typography
+												align='center'
+												sx={{
+													fontSize: 27,
+													fontWeight: '500',
+													color: 'primary.main',
+												}}
+											>
+												{e.username}
+											</Typography>
+											<Typography
+												sx={{
+													color: 'primary.main',
+													opacity: 0.6,
+													fontSize: 18,
+													fontWeight: '400',
+													marginTop: -0.5,
+												}}
+											>
+												{e.roles}
+											</Typography>
+										</Grid>
+									</motion.div>
+								</a>
+							</Grid>
+						</>
+					))}
+				</Grid>
+			</section>
 		</motion.div>
 	);
 }
