@@ -26,6 +26,7 @@ import Login from './src/pages/login/login';
 import SignUp from './src/pages/signup/signup';
 import NavTabs from './src/components/navigation/navigation';
 import { SettingsEthernet } from '@mui/icons-material';
+import NotFound from './src/pages/404/404';
 
 /* Color theme */
 const lightTheme = createTheme({
@@ -148,6 +149,11 @@ function RoutesWithAnimation() {
 				exact
 				path='/signup'
 				element={<SignUp routeVariants={routeVariants} />}
+			/>
+			<Route
+				path='*'
+				element={<NotFound />}
+				
 			/>
 		</Routes>
 	);
