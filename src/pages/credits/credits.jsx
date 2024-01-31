@@ -63,24 +63,23 @@ const team = [
 
 export default function Credits(props) {
 	return (
-		<motion.div
-			variants={props.routeVariants}
-			initial='initial'
-			animate='final'
-		>
-			<section>
-				<Grid
-					container
-					sx={{
-						width: '90vw',
-						gap: 10,
-						justifyContent: 'center',
-
-						marginTop: '60px',
-					}}
-				>
-					{team.map((e, i) => (
-						<>
+		<>
+			<motion.div
+				variants={props.routeVariants}
+				initial='initial'
+				animate='final'
+			>
+				<section>
+					<Grid
+						container
+						sx={{
+							flexDirection: 'row',
+							justifyContent: 'center',
+							gap: 10,
+							marginTop: '60px',
+						}}
+					>
+						{team.map((e, i) => (
 							<Grid item key={i}>
 								<a
 									target='_blank'
@@ -90,52 +89,49 @@ export default function Credits(props) {
 									<motion.div
 										initial={{ opacity: 1 }}
 										whileHover={{ opacity: e.links ? 0.5 : 1 }}
+										style={{
+											display: 'flex',
+											flexDirection: 'column',
+											alignItems: 'center',
+											padding: '0px 10px',
+										}}
 									>
-										<Grid
-											container
+										<Avatar
+											src={e.avatar}
 											sx={{
-												flexDirection: 'column',
-												alignItems: 'center',
-												padding: '0px 10px',
+												width: 100,
+												height: 100,
+												marginBottom: 2,
+											}}
+										/>
+										<Typography
+											align='center'
+											sx={{
+												fontSize: 27,
+												fontWeight: '500',
+												color: 'primary.main',
 											}}
 										>
-											<Avatar
-												src={e.avatar}
-												sx={{
-													width: 100,
-													height: 100,
-													marginBottom: 2,
-												}}
-											/>
-											<Typography
-												align='center'
-												sx={{
-													fontSize: 27,
-													fontWeight: '500',
-													color: 'primary.main',
-												}}
-											>
-												{e.username}
-											</Typography>
-											<Typography
-												sx={{
-													color: 'primary.main',
-													opacity: 0.6,
-													fontSize: 18,
-													fontWeight: '400',
-													marginTop: -0.5,
-												}}
-											>
-												{e.roles}
-											</Typography>
-										</Grid>
+											{e.username}
+										</Typography>
+										<Typography
+											sx={{
+												color: 'primary.main',
+												opacity: 0.6,
+												fontSize: 18,
+												fontWeight: '400',
+												marginTop: -0.5,
+											}}
+										>
+											{e.roles}
+										</Typography>
 									</motion.div>
 								</a>
 							</Grid>
-						</>
-					))}
-				</Grid>
-			</section>
-		</motion.div>
+						))}
+					</Grid>
+				</section>
+			</motion.div>
+		</>
 	);
 }
