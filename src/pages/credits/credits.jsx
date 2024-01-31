@@ -24,6 +24,8 @@ import {
 	Container,
 } from '@mui/material';
 import { MotionConfig, motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const team = [
 	{
@@ -62,6 +64,8 @@ const team = [
 ];
 
 export default function Credits(props) {
+	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+	
 	return (
 		<>
 			<motion.div
@@ -69,13 +73,19 @@ export default function Credits(props) {
 				initial='initial'
 				animate='final'
 			>
-				<section>
+				<section
+					style={{
+						maxWidth: '850px',
+						margin: 'auto',
+						padding: isMobile ? '0px' : '0px 10px',
+					}}
+				>
 					<Grid
 						container
 						sx={{
 							flexDirection: 'row',
 							justifyContent: 'center',
-							gap: 10,
+							gap: isMobile ? 4 : 10,
 							marginTop: '60px',
 						}}
 					>
@@ -87,13 +97,17 @@ export default function Credits(props) {
 									style={{ textDecoration: 'none' }}
 								>
 									<motion.div
-										initial={{ opacity: 1 }}
+										initial={{ opacity: 1, scale: isMobile ? 0.9 : 1}}
 										whileHover={{ opacity: e.links ? 0.5 : 1 }}
 										style={{
 											display: 'flex',
 											flexDirection: 'column',
 											alignItems: 'center',
-											padding: '0px 10px',
+											padding: '0px 5px',
+
+											minWidth: '150px',
+											maxWidth: '150px',
+											whiteSpace: 'nowrap',
 										}}
 									>
 										<Avatar
