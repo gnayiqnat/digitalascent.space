@@ -155,12 +155,10 @@ function RoutesWithAnimation() {
 
 const routeVariants = {
 	initial: {
-		y: '5vh',
 		opacity: 0,
 	},
 	final: {
-		y: '0vh',
 		opacity: 1,
-		transition: { delay: 0.15 },
+		transition: { delay: 0.3, duration: 0.5 },
 	},
 };
