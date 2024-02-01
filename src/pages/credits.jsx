@@ -77,7 +77,7 @@ export default function Credits(props) {
 					style={{
 						maxWidth: '850px',
 						margin: 'auto',
-						padding: isMobile ? '0px' : '0px 10px',
+						padding: isMobile ? '0px 0px 50px 0px' : '0px 10px 50px 10px',
 					}}
 				>
 					<Grid
