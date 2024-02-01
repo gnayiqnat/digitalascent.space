@@ -51,7 +51,43 @@ function GamesSec1() {
 			>
 				GAMES
 			</Typography>
-			
+			<GridItem />
+		</>
+	);
+}
+
+function GridItem() {
+	return (
+		<>
+			<Grid container>
+				<Grid
+					item
+					sx={{
+						opacity: 0.6,
+						padding: 1.5,
+						borderRadius: 3,
+						width: '330px',
+						maxWidth: '80vw',
+					}}
+				>
+					<a
+						draggable='false'
+						target='_blank'
+						href='/down-to-earth'
+						style={{ width: '330px', maxWidth: '80vw' }}
+					>
+						<img
+							draggable='false'
+							style={{
+								width: '300px',
+								maxWidth: '80vw',
+								borderRadius: '7px',
+							}}
+							src='./dte-peek.png'
+						/>
+					</a>
+				</Grid>{' '}
+			</Grid>
 		</>
 	);
 }

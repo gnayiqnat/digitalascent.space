@@ -17,16 +17,13 @@ import {
 } from 'react-router-dom';
 
 /* Pages */
-import Homepage from './src/pages/homepage/homepage';
-import Games from './src/pages/games/games';
-import Credits from './src/pages/credits/credits';
-import About from './src/pages/about/about';
-import Notifications from './src/pages/notifications/notifications';
-import Login from './src/pages/login/login';
-import SignUp from './src/pages/signup/signup';
+import Homepage from './src/pages/homepage';
+import Games from './src/pages/games';
+import Credits from './src/pages/credits';
+import About from './src/pages/about';
+import Notifications from './src/pages/notifications';
 import NavTabs from './src/components/navigation/navigation';
-import { SettingsEthernet } from '@mui/icons-material';
-import NotFound from './src/pages/404/404';
+import NotFound from './src/pages/404';
 
 /* Color theme */
 const lightTheme = createTheme({
@@ -139,16 +136,6 @@ function RoutesWithAnimation() {
 				exact
 				path='/notifications'
 				element={<Notifications routeVariants={routeVariants} />}
-			/>
-			<Route
-				exact
-				path='/login'
-				element={<Login routeVariants={routeVariants} />}
-			/>
-			<Route
-				exact
-				path='/signup'
-				element={<SignUp routeVariants={routeVariants} />}
 			/>
 			<Route
 				path='*'
