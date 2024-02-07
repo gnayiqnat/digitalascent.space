@@ -25,7 +25,7 @@ export default function NotFound() {
 
 				<Box sx={{ marginTop: '50px' }}>
                     <Button
-                        onClick={()=> {navigate('/'), console.log('passed')}}
+                        onClick={()=> {navigate('/')}}
 						sx={{
 							padding: '10px',
 							textTransform: 'none',
