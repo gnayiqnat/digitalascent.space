@@ -124,6 +124,12 @@ export default function Credits(props) {
 									borderRadius: '30px',
 								}}
 							/>
+						</Box>
+						<motion.div
+							initial={{ display: 'none' }}
+							animate={{ display: 'block' }}
+							transition={{ delay: 3 }}
+						>
 							<Typography
 								onClick={() => {
 									setAllImagesHasLoaded(true);
@@ -138,9 +144,10 @@ export default function Credits(props) {
 								}}
 								gutterBottom
 							>
-								Having trouble entering? Click here. (Some assets may be missing)
+								Having trouble entering? Click here. (Some assets may be
+								missing)
 							</Typography>
-						</Box>
+						</motion.div>
 					</Box>
 				</>
 			)}
