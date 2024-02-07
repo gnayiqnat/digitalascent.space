@@ -1,4 +1,11 @@
-import { Typography, Box, Grid, LinearProgress, Avatar } from '@mui/material';
+import {
+	Typography,
+	Box,
+	Grid,
+	LinearProgress,
+	Avatar,
+	Button,
+} from '@mui/material';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -53,12 +60,12 @@ export default function Credits(props) {
 		}
 	}
 	useEffect(() => {
-		let numberOfTeamWithAvatar = 0
-		team.map(e => {
+		let numberOfTeamWithAvatar = 0;
+		team.map((e) => {
 			if (e.avatar) {
-				numberOfTeamWithAvatar++
+				numberOfTeamWithAvatar++;
 			}
-		})
+		});
 		if (document.cookie.includes('creditsImgLoaded=true')) {
 			setAllImagesHasLoaded(true);
 			return;
@@ -117,6 +124,22 @@ export default function Credits(props) {
 									borderRadius: '30px',
 								}}
 							/>
+							<Typography
+								onClick={() => {
+									setAllImagesHasLoaded(true);
+								}}
+								variant='h6'
+								sx={{
+									fontWeight: '300',
+									color: 'primary.main',
+									opacity: 0.8,
+									marginTop: 5,
+									cursor: 'pointer',
+								}}
+								gutterBottom
+							>
+								Having trouble entering? Click here. (Some assets may be missing)
+							</Typography>
 						</Box>
 					</Box>
 				</>
