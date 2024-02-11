@@ -51,7 +51,7 @@ const darkTheme = createTheme({
 			text: '#ffffff',
 		},
 		secondary: {
-			main: '#ffffff',
+			main: '#757575',
 			text: '#757575',
 			text2: '#dcdcdc',
 		},
@@ -66,8 +66,6 @@ const darkTheme = createTheme({
 /* App */
 export default function App() {
 	const [themeMode, setThemeMode] = useState('dark');
-
-	const scaleDown = useAnimationControls();
 
 	useEffect(() => {
 		// themeMode will be null on every refresh
@@ -92,14 +90,8 @@ export default function App() {
 						animate={{ opacity: 1 }}
 						transition={{ delay: 1, duration: 1 }}
 					>
-						<motion.div animate={scaleDown}>
-							<NavTabs
-								scaleDown={scaleDown}
-								themeMode={themeMode}
-								setThemeMode={setThemeMode}
-							/>
-							<RoutesWithAnimation />
-						</motion.div>
+						<NavTabs themeMode={themeMode} setThemeMode={setThemeMode} />
+						<RoutesWithAnimation />
 					</motion.div>
 				</Router>
 			</ThemeProvider>
@@ -108,10 +100,8 @@ export default function App() {
 }
 
 function RoutesWithAnimation() {
-	const location = useLocation();
-
 	return (
-		<Routes location={location} key={location.key}>
+		<Routes>
 			<Route
 				exact
 				path='/'
@@ -137,11 +127,7 @@ function RoutesWithAnimation() {
 				path='/notifications'
 				element={<Notifications routeVariants={routeVariants} />}
 			/>
-			<Route
-				path='*'
-				element={<NotFound />}
-				
-			/>
+			<Route path='*' element={<NotFound />} />
 		</Routes>
 	);
 }
