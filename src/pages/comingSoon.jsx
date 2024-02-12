@@ -1,11 +1,16 @@
 import { Box, Button, Typography } from '@mui/material';
 import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-export default function ComingSoon() {
+export default function ComingSoon(props) {
 	const navigate = useNavigate();
 	return (
-		<>
+		<motion.div
+			variants={props.routeVariants}
+			initial='initial'
+			animate='final'
+		>
 			<Box
 				sx={{
 					display: 'flex',
@@ -15,7 +20,14 @@ export default function ComingSoon() {
 					flexDirection: 'column',
 				}}
 			>
-				<Box sx={{ flexDirection: 'row', display: 'flex', alignItems: 'center', gap: 1 }}>
+				<Box
+					sx={{
+						flexDirection: 'row',
+						display: 'flex',
+						alignItems: 'center',
+						gap: 1,
+					}}
+				>
 					<ConstructionRoundedIcon sx={{ fontSize: '50px' }} />
 					<Typography variant='h2'> Coming soon </Typography>
 				</Box>
@@ -56,6 +68,6 @@ export default function ComingSoon() {
 					</Button>
 				</Box>
 			</Box>
-		</>
+		</motion.div>
 	);
 }
