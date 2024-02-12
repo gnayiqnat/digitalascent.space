@@ -24,6 +24,7 @@ import About from './src/pages/about';
 import Notifications from './src/pages/notifications';
 import NavTabs from './src/components/navigation/navigation';
 import NotFound from './src/pages/404';
+import ComingSoon from './src/pages/comingSoon';
 
 /* Color theme */
 const lightTheme = createTheme({
@@ -126,6 +127,11 @@ function RoutesWithAnimation() {
 				exact
 				path='/notifications'
 				element={<Notifications routeVariants={routeVariants} />}
+			/>
+			<Route
+				exact
+				path='/games/down-to-earth'
+				element={<ComingSoon routeVariants={routeVariants} />}
 			/>
 			<Route path='*' element={<NotFound />} />
 		</Routes>
