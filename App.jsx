@@ -125,11 +125,6 @@ function RoutesWithAnimation() {
 			/>
 			<Route
 				exact
-				path='/notifications'
-				element={<Notifications routeVariants={routeVariants} />}
-			/>
-			<Route
-				exact
 				path='/games/down-to-earth'
 				element={<ComingSoon routeVariants={routeVariants} />}
 			/>

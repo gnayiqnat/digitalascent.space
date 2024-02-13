@@ -1,7 +1,6 @@
 import { Box, AppBar, Toolbar, Card } from '@mui/material';
 import MobileNavigation from './navigation-mobile';
 import { useMediaQuery } from 'react-responsive';
-import NotificationIcon from '../notificationIcon';
 /* Local Imports */
 import ThemeSwitcher from '../theme-switcher';
 import NavDesktop from './navigation-desktop';
@@ -19,7 +18,6 @@ export default function NavTabs(props) {
 			}}
 			elevation={0}
 		>
-			
 			<Toolbar
 				style={{
 					display: 'flex',
@@ -33,11 +31,7 @@ export default function NavTabs(props) {
 				<Logo themeMode={props.themeMode} />
 				{!isMobile && <NavDesktop />}
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
-					{!isMobile /* If is on desktop */ && (
-						<>
-							<NotificationIcon themeMode={props.themeMode} />
-						</>
-					)}
+					<Box></Box>
 					<ThemeSwitcher
 						themeMode={props.themeMode}
 						setThemeMode={props.setThemeMode}
