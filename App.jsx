@@ -21,7 +21,6 @@ import Homepage from './src/pages/homepage';
 import Games from './src/pages/games';
 import Credits from './src/pages/credits';
 import About from './src/pages/about';
-import Notifications from './src/pages/notifications';
 import NavTabs from './src/components/navigation/navigation';
 import NotFound from './src/pages/404';
 import ComingSoon from './src/pages/comingSoon';
