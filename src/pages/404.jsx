@@ -2,8 +2,8 @@ import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 export default function NotFound() {
-    const navigate = useNavigate();
-    
+	const navigate = useNavigate();
+
 	return (
 		<>
 			<Box
@@ -24,8 +24,10 @@ export default function NotFound() {
 				</Typography>
 
 				<Box sx={{ marginTop: '50px' }}>
-                    <Button
-                        onClick={()=> {navigate('/')}}
+					<Button
+						onClick={() => {
+							navigate('/');
+						}}
 						sx={{
 							padding: '10px',
 							textTransform: 'none',

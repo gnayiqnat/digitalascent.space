@@ -1,10 +1,13 @@
-import { Box, AppBar, Toolbar, Card } from '@mui/material';
-import MobileNavigation from './navigation-mobile';
+import { AppBar, Box, Card, Toolbar } from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
+import { IconButton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
 /* Local Imports */
+import Logo from '../logo';
+import MobileNavigation from './navigation-mobile';
 import ThemeSwitcher from '../theme-switcher';
 import NavDesktop from './navigation-desktop';
-import Logo from '../logo';
 
 export default function NavTabs(props) {
 	const isMobile = useMediaQuery({ query: '(max-width: 950px)' });
@@ -15,6 +18,7 @@ export default function NavTabs(props) {
 				backgroundColor: 'transparent',
 				position: 'relative',
 				borderRadius: 7,
+				padding: '15px',
 			}}
 			elevation={0}
 		>
@@ -31,7 +35,6 @@ export default function NavTabs(props) {
 				<Logo themeMode={props.themeMode} />
 				{!isMobile && <NavDesktop />}
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
-					<Box></Box>
 					<ThemeSwitcher
 						themeMode={props.themeMode}
 						setThemeMode={props.setThemeMode}

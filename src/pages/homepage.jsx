@@ -1,50 +1,32 @@
-import {
-	Typography,
-	Button,
-	IconButton,
-	Fab,
-	Box,
-	AppBar,
-	Toolbar,
-	Drawer,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Divider,
-	Grid,
-	Paper,
-	Card,
-	CardHeader,
-	CardMedia,
-	CardContent,
-	CardActions,
-	CssBaseline,
-	Container,
-} from '@mui/material';
+import { Typography, Box, Grid, Container, Button } from '@mui/material';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import { Link } from 'react-router-dom';
+import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
+import GamesSec from './gamesSec';
+import { useNavigate } from 'react-router-dom';
 
 function Homepage(props) {
+	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 	return (
 		<motion.div
 			variants={props.routeVariants}
 			initial='initial'
 			animate='final'
 		>
-			<Section1 />
+			<Section1 isMobile={isMobile} />
+			<Section2 isMobile={isMobile} />
 		</motion.div>
 	);
 }
 
-function Section1() {
+function Section1({ isMobile }) {
 	const [hasRun, setHasRun] = useState(false);
 	const top = useAnimationControls();
 	const bottom = useAnimationControls();
-	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+	const navigate = useNavigate();
+
 	function handleHover() {
 		if (hasRun === false) {
 			top.start({ x: -100 });
@@ -65,8 +47,9 @@ function Section1() {
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
+				flexDirection: 'column',
 				userSelect: 'none',
-				marginTop: 14,
+				height: '60dvh',
 			}}
 		>
 			{isMobile ? (
@@ -101,6 +84,49 @@ function Section1() {
 	);
 }
 
+function Section2({ isMobile }) {
+	return (
+		<>
+			<Box
+				sx={{ marginTop: isMobile ? '-20dvh' : '-23dvh', marginBottom: '-7px' }}
+			>
+				{' '}
+				<img src='/wave.svg' />
+			</Box>
+			<Grid
+				container
+				sx={{
+					width: '100vw',
+					height: '100dvh',
+					backgroundColor: 'primary.color',
+				}}
+			>
+				<Box
+					sx={{
+						width: '100vw',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						marginBottom: '-70px',
+					}}
+				>
+					<Typography
+						variant='h4'
+						sx={{
+							fontFamily: 'Nunito',
+							fontWeight: '700',
+							color: '#1B443F',
+						}}
+					>
+						Our Games
+					</Typography>
+				</Box>
+
+				<GamesSec />
+			</Grid>
+		</>
+	);
+}
 export default Homepage;
 
 const headerStyle = {

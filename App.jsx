@@ -31,7 +31,7 @@ const lightTheme = createTheme({
 		mode: 'light',
 		primary: {
 			main: '#000000',
-			color: '#000000',
+			color: '#00c6ac',
 			text: '#000000',
 			background: '#ffffff',
 		},
