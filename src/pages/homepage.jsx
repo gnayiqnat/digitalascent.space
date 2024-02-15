@@ -1,4 +1,4 @@
-import { Typography, Box, Grid, Container, Button } from '@mui/material';
+import { Typography, Box, Grid, Container, Button, Card } from '@mui/material';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -85,6 +85,8 @@ function Section1({ isMobile }) {
 }
 
 function Section2({ isMobile }) {
+	const navigate = useNavigate();
+
 	return (
 		<>
 			<Box
@@ -99,30 +101,96 @@ function Section2({ isMobile }) {
 					width: '100vw',
 					height: '100dvh',
 					backgroundColor: 'primary.color',
+					padding: '90px 30px',
+
+					display: 'flex',
+					justifyContent: 'center',
 				}}
 			>
-				<Box
-					sx={{
-						width: '100vw',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-						marginBottom: '-70px',
-					}}
-				>
-					<Typography
-						variant='h4'
+				<Grid item>
+					<Card
 						sx={{
-							fontFamily: 'Nunito',
-							fontWeight: '700',
-							color: '#1B443F',
+							width: isMobile ? '90vw' : '50vw',
+							padding: ' 26px 35px',
+
+							borderRadius: '10px',
 						}}
 					>
-						Our Games
-					</Typography>
-				</Box>
-
-				<GamesSec />
+						<Typography
+							sx={{
+								fontFamily: 'Nunito',
+								fontWeight: '600',
+								fontSize: '30px',
+								opacity: 0.9,
+							}}
+						>
+							Down to Earth
+						</Typography>
+						<Typography
+							gutterBottom
+							sx={{
+								fontSize: '20px',
+								lineHeight: 1.2,
+								opacity: 0.35,
+								marginLeft: '7px',
+							}}
+						>
+							A single-player FPS action-adventure game centered around the
+							theme of renewable and green energy.
+						</Typography>
+						<br />
+						<Box sx={{ display: 'flex', justifyContent: 'end' }}>
+							<Button
+								onClick={() => {window.open(
+									'https://www.roblox.com/games/15127205237/Down-to-Earth',
+									'_blank'
+								)}}
+								sx={{
+									backgroundColor: '#007566',
+									textTransform: 'none',
+									padding: '7px 17px',
+								}}
+							>
+								<Typography
+									sx={{
+										fontFamily: 'Nunito',
+										fontWeight: '700',
+										fontSize: '17px',
+										letterSpacing: 0.4,
+										opacity: 0.7,
+									}}
+								>
+									PLAY
+								</Typography>
+							</Button>
+							<Button
+								onClick={() => {
+									navigate('/games/down-to-earth');
+								}}
+								sx={{
+									marginLeft: '12px',
+									backgroundColor: 'rgba(0,117,102, 0.1)',
+									padding: '7px 16px',
+									borderWidth: '3px',
+									borderStyle: 'solid',
+									borderColor: '#007566',
+								}}
+							>
+								<Typography
+									sx={{
+										fontFamily: 'Nunito',
+										fontWeight: '700',
+										fontSize: '17px',
+										letterSpacing: 0.4,
+										color: '#007566',
+									}}
+								>
+									LEARN MORE
+								</Typography>{' '}
+							</Button>
+						</Box>
+					</Card>
+				</Grid>
 			</Grid>
 		</>
 	);
