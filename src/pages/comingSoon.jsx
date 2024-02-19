@@ -29,7 +29,10 @@ export default function ComingSoon(props) {
 					}}
 				>
 					<ConstructionRoundedIcon sx={{ fontSize: '50px' }} />
-					<Typography variant='h2'> Coming soon </Typography>
+					<Typography variant='h2' sx={{ fontSize: 'clamp(20px, 10vw, 55px)' }}>
+						{' '}
+						Coming soon{' '}
+					</Typography>
 				</Box>
 				<Typography
 					variant='h6'
