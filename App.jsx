@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
-import { motion, useAnimationControls } from 'framer-motion';
+import { AnimatePresence, motion, useAnimationControls } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 
 /* Fonts */
@@ -33,12 +33,14 @@ const lightTheme = createTheme({
 			main: '#000000',
 			color: '#00c6ac',
 			text: '#000000',
-			background: '#ffffff',
 		},
 		secondary: {
 			main: '#757575',
 			text: '#757575',
 		},
+		background: {
+			paper: '#ffffff'
+		}
 	},
 });
 
@@ -91,7 +93,9 @@ export default function App() {
 						transition={{ delay: 1, duration: 1 }}
 					>
 						<NavTabs themeMode={themeMode} setThemeMode={setThemeMode} />
-						<RoutesWithAnimation />
+						<AnimatePresence>
+							<RoutesWithAnimation />
+						</AnimatePresence>
 					</motion.div>
 				</Router>
 			</ThemeProvider>
