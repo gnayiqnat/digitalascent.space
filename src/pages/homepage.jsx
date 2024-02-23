@@ -131,7 +131,7 @@ function Section2({ isMobile }) {
 							sx={{
 								fontSize: '20px',
 								lineHeight: 1.2,
-								opacity: 0.35,
+								color: 'secondary.main',
 								marginLeft: '7px',
 							}}
 						>
@@ -142,7 +142,7 @@ function Section2({ isMobile }) {
 						<Box sx={{ display: 'flex', justifyContent: 'end' }}>
 							<Button
 								onClick={() => {window.open(
-									'https://www.roblox.com/games/15127205237/Down-to-Earth',
+										'https://www.roblox.com/games/15127205237/Down-to-Earth',
 									'_blank'
 								)}}
 								sx={{
