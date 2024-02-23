@@ -16,9 +16,10 @@
     "@mui/icons-material": "^5.14.12",
     "@mui/material": "^5.14.13",
     "@supabase/supabase-js": "^2.38.2",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "^11.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.16.0"
   },
@@ -30,7 +31,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "vite": "^4.5.0",
+    "vite": "^5.1.4",
     "wrangler": "^3.12.0"
   }
 }
