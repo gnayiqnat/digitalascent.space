@@ -6,7 +6,7 @@ import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 import GamesSec from './gamesSec';
 import { useNavigate } from 'react-router-dom';
 
-function Homepage(props) {
+export default function Homepage(props) {
 	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 	return (
 		<motion.div
@@ -90,7 +90,7 @@ function Section2({ isMobile }) {
 	return (
 		<>
 			<Box
-				sx={{ marginTop: isMobile ? '-20dvh' : '-23dvh', marginBottom: '-7px' }}
+				sx={{ marginTop: isMobile ? '-20dvh' : '-23dvh', marginBottom: '-9px' }}
 			>
 				{' '}
 				<img src='/wave.svg' />
@@ -99,7 +99,6 @@ function Section2({ isMobile }) {
 		</>
 	);
 }
-export default Homepage;
 
 const headerStyle = {
 	lineHeight: 0.88,
